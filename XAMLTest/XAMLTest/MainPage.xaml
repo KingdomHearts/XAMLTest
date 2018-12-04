@@ -9,7 +9,7 @@
             <Label TextColor="Yellow" Text="This was a green Label"/>
             <Label Text="This is default , non custumized label"/>
             <Label FontSize="30" Text="This is Font Size label"/>
-            <Label FontAttributes="Bold" Text="This is bold text Label"/>
+            <Label FontAttributes="Bold" Text="Ik ben een dodo boi halo mah name is boa boa die grande yyeyeyeyeyeye kek"/>
             <Label>
                 <Label.FormattedText>
                     <FormattedString>
