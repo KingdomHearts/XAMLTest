@@ -48,5 +48,10 @@ public partial class TimeLine : ContentPage
             //template.SetBinding(TextCell.DetailProperty, "AdvancedInfo");
             TimeLineView.ItemTemplate = template;
         }
+
+        async void OnItemClicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Profile());
+        }
     }
 }

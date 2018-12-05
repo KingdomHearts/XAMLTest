@@ -8,7 +8,7 @@
     <ContentPage.Content>
         <StackLayout Padding="5,10" x:Name="layout">
             <Entry x:Name="TimelineTweet" Placeholder="Wat wil je delen?" MaxLength="140" />
-            <!--<ListView x:Name="TimeLineView" ItemsSource=""></ListView>-->
+            <Button Text="Profile"  Clicked="OnItemClicked"/><!--<ListView x:Name="TimeLineView" ItemsSource=""></ListView>-->
             <ListView x:Name="TimeLineView" BindingContext="{Binding MyNiceObject}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
