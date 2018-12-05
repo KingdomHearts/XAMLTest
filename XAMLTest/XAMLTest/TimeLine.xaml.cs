@@ -13,6 +13,12 @@ namespace XAMLTest
 		public TimeLine ()
 		{
 			InitializeComponent ();
+
+            ListView listView = new ListView();
+
+            //listView.ad
+
+            TimeLineView = listView;
 		}
 	}
 }

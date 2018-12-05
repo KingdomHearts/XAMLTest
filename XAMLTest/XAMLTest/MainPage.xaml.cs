@@ -21,7 +21,12 @@ namespace XAMLTest
             };
 
             //Hier een show naar TimeLine Page
-            
+            TimeLine TL = new TimeLine();
+            //[System.CodeDom.Compiler.GeneratedCodeAttribute("")]
+            //MainPage = new NavigationPage (new TimeLine());
+            //await NavigationPage.  //.PushAsync(new TimeLine());
+            await Navigation.PushAsync(new TimeLine());
+
         }
         async void OnRegisterButtonClicked(object sender, EventArgs e)
         {

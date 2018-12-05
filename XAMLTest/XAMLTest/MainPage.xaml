@@ -2,15 +2,16 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XAMLTest"
+             NavigationPage.HasNavigationBar="false"
              x:Class="XAMLTest.MainPage">
 
     <ContentPage.Content>
-        <StackLayout Padding="5,10" x:Name="StackLayout">
-            <Image Source="D:\Visual Studio Projects\SSS\Android Xamerin App\XAMLTest\XAMLTest\XAMLTest.Android\Resources\drawable\Hugo.png" />
-            <Entry x:Name="usernameEntry" Placeholder="Username"/>
-            <Entry x:Name="passwordEntry" IsPassword="True" Placeholder="Password"/>
-            <Button Text="Volgende" Clicked="OnLoginButtonClicked"/>
-            <Button TranslationY="40" Text="Ik ben nog geen lid" Clicked="OnRegisterButtonClicked"/>
+        <StackLayout x:Name="StackLayout">
+            <Image TranslationY="-50" ScaleX="0.6" ScaleY="0.7" Source="pack://application:,,,/Hugo.png" />
+            <Entry TranslationY="-50" x:Name="usernameEntry" Placeholder="Username"/>
+            <Entry TranslationY="-50" x:Name="passwordEntry" IsPassword="True" Placeholder="Password"/>
+            <Button TranslationY="-50" Text="Volgende" Clicked="OnLoginButtonClicked"/>
+            <Button TranslationY="-50" Text="Ik ben nog geen lid" Clicked="OnRegisterButtonClicked"/>
         </StackLayout>
     </ContentPage.Content>
 
