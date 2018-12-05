@@ -14,7 +14,7 @@ namespace XAMLTest
 		{
 			InitializeComponent ();
             //Get info of the profile
-            ProfileAchievements.
+            //ProfileAchievements.
 		}
 	}
 }
