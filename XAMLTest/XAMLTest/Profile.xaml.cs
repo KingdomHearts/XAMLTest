@@ -13,6 +13,8 @@ namespace XAMLTest
 		public Profile ()
 		{
 			InitializeComponent ();
+            Data data = new Data();
+            data.GetProfileData();
             //Get info of the profile
             //ProfileAchievements.
 		}
