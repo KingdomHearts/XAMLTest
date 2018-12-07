@@ -19,13 +19,13 @@ namespace XAMLTest
 
        
         private static volatile App _instance;
-        private static object syncroot = new object();
+        private static object _syncroot = new object();
         public static App Instance
         {
             get {
                 if (_instance == null)
                 {
-                    lock (syncroot)
+                    lock (_syncroot)
                     {
                         if (_instance == null)
                             _instance = new App();
