@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="false"
+             x:Class="XAMLTest.Profile">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label x:Name="ProfileName" Text="Someones Profile" />
+            <Label x:Name="ProfileLevel" Text="Level 6" />
+            <Image x:Name="ProfileImage" />
+            <ProgressBar x:Name="ProfileProgress" />
+            <Switch IsToggled="false" />
+
+            <Label BackgroundColor="Blue" x:Name="ProfileAchievements">Kan hier ook tekst?</Label>
+            <Label BackgroundColor="Blue" x:Name="ProfileFriends">Kan hier ook tekst?</Label>
+            <Label BackgroundColor="White" x:Name="ProfileBiography">Kan hier ook tekst?</Label>
+            <Label BackgroundColor="Violet" x:Name="ProfileGroups">Kan hier ook tekst?</Label>
+            <Label BackgroundColor="Blue" x:Name="ProfileHugo">Kan hier ook tekst?</Label>
+            <!--<BoxView x:Name="ProfileAchievements"   BackgroundColor="Blue" />-->
+            <!--<BoxView x:Name="ProfileFriends" BackgroundColor="Blue" />-->
+            <!--<BoxView x:Name="ProfileBiography" BackgroundColor="White" />-->
+            <!--<BoxView x:Name="ProfileGroups" BackgroundColor="Violet" />-->
+            <!--<BoxView x:Name="ProfileHugo" BackgroundColor="Blue" />-->
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

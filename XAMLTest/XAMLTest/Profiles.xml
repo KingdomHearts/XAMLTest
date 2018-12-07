@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Profiles>
+  <Profile >
+    <Name></Name>
+    <FirstName></FirstName>
+    <UserName>Hugo</UserName>
+    <Bio>Ik ben Hugo en ik zal je helpen op de weg!</Bio>
+    <Email></Email>
+    <Password>HugoApplication</Password>
+  </Profile>
+</Profiles>
