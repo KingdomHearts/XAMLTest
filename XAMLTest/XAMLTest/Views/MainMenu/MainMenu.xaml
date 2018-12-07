@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:mainMenu="clr-namespace:XAMLTest.Views.MainMenu"     
+             xmlns:mainMenu="clr-namespace:XAMLTest.Views.MainMenu"  
+             xmlns:timeline="clr-namespace:XAMLTest"
              x:Class="XAMLTest.Views.MainMenu.MainMenu">
 
     <MasterDetailPage.Master>
@@ -10,7 +11,7 @@
     <MasterDetailPage.Detail>
         <NavigationPage>
             <x:Arguments>
-                <mainMenu:MainMenuDetail></mainMenu:MainMenuDetail>
+                <timeline:TimeLine></timeline:TimeLine>
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>
