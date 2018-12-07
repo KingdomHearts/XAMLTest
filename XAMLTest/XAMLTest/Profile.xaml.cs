@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using XAMLTest.Data;
 using Xamarin.Forms;
 
 namespace XAMLTest
@@ -13,7 +13,7 @@ namespace XAMLTest
 		public Profile ()
 		{
 			InitializeComponent ();
-            Data data = new Data();
+            MockData data = new MockData();
             data.GetProfileData();
             //Get info of the profile
             //ProfileAchievements.

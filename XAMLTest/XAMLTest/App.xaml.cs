@@ -12,9 +12,9 @@ namespace XAMLTest
         {
             InitializeComponent();
 
-            //MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new MainPage());
 
-            MainPage = new MainMenu();
+            //MainPage = new MainMenu();
         }
 
        

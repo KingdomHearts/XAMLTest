@@ -7,7 +7,7 @@
 
     <ContentPage.Content>
         <StackLayout x:Name="StackLayout">
-            <Image TranslationY="-50" ScaleX="0.6" ScaleY="0.7" Source="pack://application:,,,/Hugo.png" />
+            <Image TranslationY="-50" ScaleX="0.6" ScaleY="0.7" Source="pack://application:,,,/hugo.png" />
             <Entry TranslationY="-50" x:Name="usernameEntry" Placeholder="Username"/>
             <Entry TranslationY="-50" x:Name="passwordEntry" IsPassword="True" Placeholder="Password"/>
             <Button TranslationY="-50" Text="Volgende" Clicked="OnLoginButtonClicked"/>
