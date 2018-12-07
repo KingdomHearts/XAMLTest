@@ -1,6 +1,7 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XAMLTest.Views.MainMenu;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XAMLTest
@@ -11,7 +12,28 @@ namespace XAMLTest
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            //MainPage = new NavigationPage(new MainPage());
+
+            MainPage = new MainMenu();
+        }
+
+       
+        private static volatile App _instance;
+        private static object syncroot = new object();
+        public static App Instance
+        {
+            get {
+                if (_instance == null)
+                {
+                    lock (syncroot)
+                    {
+                        if (_instance == null)
+                            _instance = new App();
+                    }
+                }
+
+                return _instance;
+            }
         }
 
         protected override void OnStart()

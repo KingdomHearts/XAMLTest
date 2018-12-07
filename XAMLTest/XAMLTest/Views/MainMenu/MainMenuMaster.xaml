@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="XAMLTest.Views.MainMenu.MainMenuMaster"
+             Title="Master">
+    <StackLayout>
+        <ListView x:Name="MenuItemsListView"
+                SeparatorVisibility="None"
+                HasUnevenRows="True"
+                ItemsSource="{Binding MenuItems}"
+                ItemTapped="MenuItemListView_OnItemTapped">
+            <ListView.Header>
+                <Grid HeightRequest="100" BackgroundColor="#03A9F4" Padding="0">
+                    <Image Source="hugo.png"
+                           IsOpaque="False" Aspect="AspectFill"
+                           HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"></Image>
+                    <Grid Padding="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackLayout Grid.Column="1">
+                            <Label Text="Menu" Style="(DynamicSource Subtitlestyle)"></Label>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+            </ListView.Header>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+                            <Label VerticalOptions="FillAndExpand"
+                               VerticalTextAlignment="Center"
+                               Text="{Binding Text}"
+                               FontSize="24"/>
+                        </StackLayout>
+                  </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
+</ContentPage>

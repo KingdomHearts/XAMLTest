@@ -13,11 +13,15 @@ namespace XAMLTest
         {
             InitializeComponent();
         }
+
+
+
         async void OnLoginButtonClicked(object sender, EventArgs e)
         {
-            var user = new User {
-				Username = usernameEntry.Text,
-				Password = passwordEntry.Text
+            var user = new User
+            {
+                Username = usernameEntry.Text,
+                Password = passwordEntry.Text
             };
 
             //Hier een show naar TimeLine Page
