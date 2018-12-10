@@ -15,7 +15,6 @@ namespace XAMLTest.Views.MainMenu
 		public MainMenu ()
 		{
             InitializeComponent();
-
         }
         
 	}

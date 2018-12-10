@@ -51,7 +51,7 @@ namespace XAMLTest.ViewModels
             }
             else
             {
-                Console.WriteLine("mdp is null");
+                Console.WriteLine("mdp");
             }
            
         }
