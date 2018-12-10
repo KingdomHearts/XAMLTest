@@ -42,6 +42,19 @@ namespace XAMLTest.Data
             };
         }
 
+        public void EditXmlProfileData(string pUserName)
+        {
+            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Profiles.xml");
+            if (!File.Exists(fileName))
+            {
+                File.WriteAllText(fileName, CreateXmlMockData());
+            }
+
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(fileName);
+
+
+        }
         public string CreateXmlMockData()
         {
             XElement contacts =
