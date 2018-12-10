@@ -24,16 +24,29 @@ namespace XAMLTest
                 Password = passwordEntry.Text
             };
 
-            //Hier een show naar TimeLine Page
-            TimeLine TL = new TimeLine();
-            //[System.CodeDom.Compiler.GeneratedCodeAttribute("")]
-            //MainPage = new NavigationPage (new TimeLine());
-            //await NavigationPage.  //.PushAsync(new TimeLine());
-            await Navigation.PushAsync(new TimeLine());
+            XAMLTest.Data.MockData mockData = new Data.MockData();
+            ModelsProfile modelsProfile = mockData.GetProfileData(usernameEntry.Text);
+            if (modelsProfile.Password == passwordEntry.Text)
+            {
+                //Hier een show naar TimeLine Page
+                TimeLine TL = new TimeLine();
+                //[System.CodeDom.Compiler.GeneratedCodeAttribute("")]
+                //MainPage = new NavigationPage (new TimeLine());
+                //await NavigationPage.  //.PushAsync(new TimeLine());
+                await Navigation.PushAsync(new TimeLine());
+            }
+            else
+            {
+                //Text that login failed
+            }
+        
 
         }
         async void OnRegisterButtonClicked(object sender, EventArgs e)
         {
+            XAMLTest.Data.MockData mockData = new Data.MockData();
+
+            mockData.CreateProfileData(usernameEntry.Text, passwordEntry.Text);
             var user = new User
             {
                 Username = usernameEntry.Text,

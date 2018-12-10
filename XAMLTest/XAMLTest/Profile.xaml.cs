@@ -14,7 +14,9 @@ namespace XAMLTest
 		{
 			InitializeComponent ();
             MockData data = new MockData();
-            data.GetProfileData();
+            ModelsProfile thisProfile = data.GetProfileData("michaelbos");
+            ProfileBiography.Text = thisProfile.Bio;
+            ProfileName.Text = thisProfile.FirstName + " " + thisProfile.Name;
             //Get info of the profile
             //ProfileAchievements.
 		}
