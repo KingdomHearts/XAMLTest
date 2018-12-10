@@ -1,11 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Profiles>
-  <Profile >
+  <Profile>
     <Name></Name>
-    <FirstName></FirstName>
+    <FirstName>Hu</FirstName>
     <UserName>Hugo</UserName>
     <Bio>Ik ben Hugo en ik zal je helpen op de weg!</Bio>
-    <Email></Email>
+    <Email>Test@email</Email>
     <Password>HugoApplication</Password>
+  </Profile>
+  <Profile>
+    <Name>Bossink</Name>
+    <FirstName>Michael</FirstName>
+    <UserName>michaelbos</UserName>
+    <Bio>Ik ben Michael en ben een programmeur</Bio>
+    <Email>Tes1t@email</Email>
+    <Password>testing</Password>
   </Profile>
 </Profiles>
