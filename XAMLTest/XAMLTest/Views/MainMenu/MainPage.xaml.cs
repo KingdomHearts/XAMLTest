@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using XAMLTest.Data;
 
 namespace XAMLTest.Views.MainMenu
 {
@@ -16,11 +17,6 @@ namespace XAMLTest.Views.MainMenu
 
         async void OnLoginButtonClicked(object sender, EventArgs e)
         {
-            var user = new User
-            {
-                Username = usernameEntry.Text,
-                Password = passwordEntry.Text
-            };
 
             XAMLTest.Data.MockData mockData = new Data.MockData();
             ModelsProfile modelsProfile = mockData.GetProfileData(usernameEntry.Text);
@@ -28,6 +24,8 @@ namespace XAMLTest.Views.MainMenu
             {
                 if (modelsProfile.Password == passwordEntry.Text)
                 {
+                    User.UserName = usernameEntry.Text;
+                    User.Password = passwordEntry.Text;
                     //Hier een show naar TimeLine Page
                     TimeLine TL = new TimeLine();
                     //[System.CodeDom.Compiler.GeneratedCodeAttribute("")]
@@ -50,11 +48,6 @@ namespace XAMLTest.Views.MainMenu
             XAMLTest.Data.MockData mockData = new Data.MockData();
 
             mockData.CreateProfileData(usernameEntry.Text, passwordEntry.Text);
-            var user = new User
-            {
-                Username = usernameEntry.Text,
-                Password = passwordEntry.Text
-            };
         }
 
     }
