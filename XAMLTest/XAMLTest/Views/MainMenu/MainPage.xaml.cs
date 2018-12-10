@@ -4,8 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using XAMLTest.Views.MainMenu;
 
-namespace XAMLTest
+namespace XAMLTest.Views.MainMenu
 {
     public partial class MainPage : ContentPage
     {
@@ -24,15 +25,15 @@ namespace XAMLTest
                 Password = passwordEntry.Text
             };
 
-            //Hier een show naar TimeLine Page
-            TimeLine TL = new TimeLine();
+            //Hier een show naar < Page
             //[System.CodeDom.Compiler.GeneratedCodeAttribute("")]
             //MainPage = new NavigationPage (new TimeLine());
+
             //await NavigationPage.  //.PushAsync(new TimeLine());
             await Navigation.PushAsync(new TimeLine());
 
         }
-        async void OnRegisterButtonClicked(object sender, EventArgs e)
+        void OnRegisterButtonClicked(object sender, EventArgs e)
         {
             var user = new User
             {

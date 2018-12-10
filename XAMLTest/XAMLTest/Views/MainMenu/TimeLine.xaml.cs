@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using XAMLTest.Views.MainMenu;
 
 public class MyNiceObject
 {
@@ -19,16 +21,15 @@ public class MyNiceObject
     }
 }
 
-namespace XAMLTest
+namespace XAMLTest.Views.MainMenu
 {
 
 public partial class TimeLine : ContentPage
-    {
+{
     public TimeLine ()
         {
 
             InitializeComponent();
-
             //aantal records in de database
             int dynamicTestValue = 10; //This is the "dynamic" value 
             MyNiceObject mObject;

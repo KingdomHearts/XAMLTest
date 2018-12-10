@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
+using Android.Content.Res;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XAMLTest.Views.MainMenu;
@@ -12,11 +14,8 @@ namespace XAMLTest
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
-
-            //MainPage = new MainMenu();
+            MainPage = new MainMenu();
         }
-
        
         private static volatile App _instance;
         private static object _syncroot = new object();
@@ -31,7 +30,6 @@ namespace XAMLTest
                             _instance = new App();
                     }
                 }
-
                 return _instance;
             }
         }
@@ -39,6 +37,7 @@ namespace XAMLTest
         protected override void OnStart()
         {
             // Handle when your app starts
+
         }
 
         protected override void OnSleep()

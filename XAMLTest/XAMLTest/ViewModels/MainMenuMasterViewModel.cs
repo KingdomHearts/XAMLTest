@@ -6,6 +6,7 @@ using System.Text;
 using System.Collections.ObjectModel;
 using XAMLTest.Data;
 using XAMLTest.Models;
+using XAMLTest.Views.MainMenu;
 
 
 using Xamarin.Forms.Internals;
@@ -46,8 +47,13 @@ namespace XAMLTest.ViewModels
             if (mdp != null)
             {
                 mdp.Detail = new NavigationPage(page);
+                mdp.IsPresented = false;
             }
-            mdp.IsPresented = false;
+            else
+            {
+                Console.WriteLine("mdp is null");
+            }
+           
         }
     }
 }

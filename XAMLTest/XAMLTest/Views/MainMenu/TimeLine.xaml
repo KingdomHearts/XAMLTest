@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:XAMLTest"
-             NavigationPage.HasNavigationBar="false"
-             x:Class="XAMLTest.TimeLine">
+             xmlns:local="clr-namespace:XAMLTest.Views.MainMenu"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="XAMLTest.Views.MainMenu.TimeLine">
     
     <ContentPage.Content>
         <StackLayout Padding="5,10" x:Name="layout">

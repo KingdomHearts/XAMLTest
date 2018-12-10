@@ -13,7 +13,7 @@ using Android.Widget;
 
 namespace XAMLTest.Droid
 {
-    [Activity(Label = "XAMLTest", Icon ="@drawable/hugo", Theme= "@style/Theme.Splash", MainLauncher = true, NoHistory = true)]
+    [Activity(Label = "YesHugo", Icon ="@drawable/hugo", Theme= "@style/Theme.Splash", MainLauncher = true, NoHistory = true)]
     public class SplashActivity : AppCompatActivity
     {
         protected override void OnCreate(Bundle savedInstanceState)
