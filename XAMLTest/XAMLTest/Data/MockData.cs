@@ -67,59 +67,52 @@ namespace XAMLTest.Data
         public void CreateProfileData(string pUserName, string pPassword)
         {
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Profiles.xml");
-
-            string xml = CreateXmlMockData();
-            File.WriteAllText(fileName, CreateXmlMockData());
-
-            //string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Profiles.xml");
-
-            //File.Create(Path);
-            // var assembly = IntrospectionExtensions.GetTypeInfo(typeof(LoadResourceText)).Assembly;
-            // Stream stream = assembly.GetManifestResourceStream("XAMLTest.Profiles.xml");
-
-            //  bool usable = stream.CanWrite;
-            string exitst = "";
-           // using (StringWriter str = new StringWriter())
-             /*
-            using (XmlTextWriter xml = new XmlTextWriter(stream, UTF32Encoding.UTF32))
+            if (!File.Exists(fileName))
             {
-                xml.WriteStartDocument();
-                xml.WriteStartElement("Profiles");
-                xml.WriteWhitespace("\n");
-
-                // Loop over Tuples.
-                foreach (var element in GetPorfilesData())
-                {
-                    // Write Employee data.
-                    xml.WriteStartElement("Profile");
-
-                    xml.WriteElementString("Name", element.Name);
-                    xml.WriteElementString("FirstName", element.FirstName);
-                    xml.WriteElementString("UserName", element.UserName);
-                    xml.WriteElementString("Bio", element.Bio);
-                    xml.WriteElementString("Email", element.Email);
-                    xml.WriteElementString("Password", element.Password);
-
-                    xml.WriteEndElement();
-                    xml.WriteWhitespace("\n");
-                }
-
-                // End.
-                xml.WriteEndElement();
-                xml.WriteEndDocument();
-
-                // Result is a string.
-                string result = str.ToString();
+                File.WriteAllText(fileName, CreateXmlMockData());
             }
-            */
+
+            XmlDocument xmlProfileDoc = new XmlDocument();
+            xmlProfileDoc.Load(fileName);
+            XmlElement ParentElement = xmlProfileDoc.CreateElement("Profile");
+            XmlElement Name = xmlProfileDoc.CreateElement("Name");
+            Name.InnerText = "";
+            XmlElement FirstName = xmlProfileDoc.CreateElement("FirstName");
+            FirstName.InnerText = "";
+            XmlElement UserName = xmlProfileDoc.CreateElement("UserName");
+            UserName.InnerText = pUserName;
+            XmlElement Bio = xmlProfileDoc.CreateElement("Bio");
+            Bio.InnerText = "";
+            XmlElement Email = xmlProfileDoc.CreateElement("Email");
+            Email.InnerText = "";
+            XmlElement Password = xmlProfileDoc.CreateElement("Password");
+            Password.InnerText = pPassword;
+
+            ParentElement.AppendChild(Name);
+            ParentElement.AppendChild(FirstName);
+            ParentElement.AppendChild(UserName);
+            ParentElement.AppendChild(Email);
+            ParentElement.AppendChild(Bio);
+            ParentElement.AppendChild(Password);
+            xmlProfileDoc.DocumentElement.AppendChild(ParentElement);
+            xmlProfileDoc.Save(fileName);
+
+            FileStream file = File.Open(fileName, FileMode.Open);
+            using (var reader = new StreamReader(file))
+            {
+                string read = reader.ReadToEnd();
+                string test = "";
+            }
         }
         
         public List<ModelsProfile> GetProfilesData()
         {
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Profiles.xml");
-            File.WriteAllText(fileName, CreateXmlMockData());
-            //var assembly = IntrospectionExtensions.GetTypeInfo(typeof(LoadResourceText)).Assembly;
-            //Stream stream = assembly.GetManifestResourceStream("XAMLTest.Profiles.xml");
+            if (!File.Exists(fileName))
+            {
+
+                File.WriteAllText(fileName, CreateXmlMockData());
+            }
             Stream stream = File.Open(fileName, FileMode.Open);
             List<ModelsProfile> profiles = new List<ModelsProfile>();
             int index = 0;
@@ -180,13 +173,12 @@ namespace XAMLTest.Data
         public ModelsProfile GetProfileData(string pUserName)
         {
             ModelsProfile returnProfile;
-            //var assembly = IntrospectionExtensions.GetTypeInfo(typeof(LoadResourceText)).Assembly;
-            //Stream stream = assembly.GetManifestResourceStream("XAMLTest.Profiles.xml");
 
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Profiles.xml");
-            File.WriteAllText(fileName, CreateXmlMockData());
-            //var assembly = IntrospectionExtensions.GetTypeInfo(typeof(LoadResourceText)).Assembly;
-            //Stream stream = assembly.GetManifestResourceStream("XAMLTest.Profiles.xml");
+            if (!File.Exists(fileName))
+            {
+                File.WriteAllText(fileName, CreateXmlMockData());
+            }
             string returning = CreateXmlMockData();
             Stream stream = File.Open(fileName, FileMode.Open);
             List<ModelsProfile> profiles = new List<ModelsProfile>();
