@@ -14,8 +14,6 @@ namespace XAMLTest.Views.MainMenu
             InitializeComponent();
         }
 
-
-
         async void OnLoginButtonClicked(object sender, EventArgs e)
         {
             var user = new User

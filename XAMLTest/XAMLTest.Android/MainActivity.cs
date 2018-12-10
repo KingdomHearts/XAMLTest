@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.Views;
@@ -23,6 +24,14 @@ namespace XAMLTest.Droid
                 base.OnCreate(savedInstanceState);
                 global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
                 LoadApplication(new App());
+        }
+
+        public override void OnBackPressed()
+        {
+            Intent startMain = new Intent(Intent.ActionMain);
+            startMain.AddCategory(Intent.CategoryHome);
+            startMain.SetFlags(ActivityFlags.NewTask);
+            StartActivity(startMain);
         }
 
     }
