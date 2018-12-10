@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using Android.Content;
-using Android.Content.Res;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XAMLTest.Views.MainMenu;
@@ -49,9 +47,6 @@ namespace XAMLTest
         protected override void OnResume()
         {
             // Handle when your app resumes
-            
         }
-
-       
     }
 }
