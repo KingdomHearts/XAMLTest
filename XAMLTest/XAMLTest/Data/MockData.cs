@@ -42,7 +42,7 @@ namespace XAMLTest.Data
             };
         }
 
-        public void EditXmlProfileData(string pUserName)
+        public void EditXmlProfileData(string pAttribute, string pValue)
         {
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Profiles.xml");
             if (!File.Exists(fileName))
@@ -53,8 +53,78 @@ namespace XAMLTest.Data
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(fileName);
 
+            XmlNodeList aNodes = xmlDocument.GetElementsByTagName("Profile");
 
-        }
+            int indexNodes = 0;
+            int index = 0;
+            bool isBreak = false;
+            // loop through all AID nodes
+            foreach (XmlNode aNode in aNodes)
+            {
+
+                // check if that attribute even exists...
+                XmlNode node = xmlDocument.GetElementsByTagName("Profile").Item(index);
+                //Loop through the child nodes
+                foreach (XmlNode item in node.ChildNodes)
+                {
+                    if ((item).NodeType == XmlNodeType.Element)
+                    {
+                        //Get the Element value here
+                        if ((((item).FirstChild)) != null)
+                        {
+
+                            string value = ((item).FirstChild).Value;
+                            //Console.WriteLine("Element Value = " + value);
+                            if (item.Name == "UserName")
+                            {
+                                if (value == User.UserName)
+                                {
+                                    for (int nodeCount = 0; nodeCount < node.ChildNodes.Count; nodeCount++)
+                                    {
+                                        if (node.ChildNodes[nodeCount].Name == pAttribute)
+                                        {
+                                            node.ChildNodes[nodeCount].InnerText = pValue;
+                                            isBreak = true;
+                                            break;
+                                        }
+                                        if ((nodeCount+1) == node.ChildNodes.Count)
+                                        {
+                                            XmlNode newNode = xmlDocument.CreateNode(XmlNodeType.Element, pAttribute, null);
+                                            newNode.InnerText = pValue;
+                                            aNode.AppendChild(newNode);
+                                            //newNode.AppendChild(node);
+                                            //xmlDocument.DocumentElement.AppendChild(newNode);
+                                            isBreak = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (isBreak)
+                    {
+                        break;
+                    }
+                    indexNodes++;
+                }
+                if (isBreak)
+                {
+                    break;
+                }
+                index++;
+            }
+            xmlDocument.Save(fileName);
+
+            Stream stream = File.Open(fileName, FileMode.Open);
+            using (var reader = new System.IO.StreamReader(stream))
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(reader.ReadToEnd());
+                string test = "";
+            }
+
+            }
         public string CreateXmlMockData()
         {
             XElement contacts =
