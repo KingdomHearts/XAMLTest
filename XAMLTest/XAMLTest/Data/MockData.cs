@@ -10,6 +10,7 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
+using Xamarin.Forms;
 using XAMLTest.Models;
 
 namespace XAMLTest.Data
@@ -42,12 +43,79 @@ namespace XAMLTest.Data
             };
         }
 
+        public void GetTimeLineData()
+        {
+            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TimeLine"+User.UserName+".xml");
+            if (!File.Exists(fileName))
+            {
+                File.WriteAllText(fileName, CreateXmlMockDataTimeLine());
+            }
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(fileName);
+
+            XmlNodeList aNodes = xmlDocument.GetElementsByTagName("TimeLineProfile");
+            List<TimeLine> timeLines = new List<TimeLine>();
+            TimeLine timeLine = new TimeLine();
+            int index = 0;
+            foreach (XmlNode xmlNode in aNodes)
+            {
+
+                XmlNode node = xmlDocument.GetElementsByTagName("Profile").Item(index);
+
+                foreach (XmlNode item in node.ChildNodes)
+                {
+                    if ((xmlNode).NodeType == XmlNodeType.Element)
+                    {
+                        //Get the Element value here
+                        if ((((xmlNode).FirstChild)) != null)
+                        {
+
+                            string value = ((xmlNode).FirstChild).Value;
+                            if (xmlNode.Name == "ProfileImage")
+                            {
+                                Image image = new Image();
+                                image.Source = value;
+                                timeLine.ProfileImage = image;
+                            }
+                            if (xmlNode.Name == "ProfileName")
+                            {
+                                timeLine.ProfileName = value;
+                            }
+                            if (xmlNode.Name == "TimeLineTime")
+                            {
+                                timeLine.TimeLineTime = value;
+                            }
+                            if (xmlNode.Name == "TimeLineTekst")
+                            {
+                                timeLine.TimeLineTekst = value;
+                            }
+                            if (xmlNode.Name == "TimeLineLikes")
+                            {
+                                timeLine.TimeLineLikes = value;
+                            }
+                        }
+                    }
+                }
+                index++;
+                timeLines.Add(timeLine);
+            }
+        }
+
+        public void AddToTimeLineData()
+        {
+            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TimeLine" + User.UserName + ".xml");
+            if (!File.Exists(fileName))
+            {
+                File.WriteAllText(fileName, CreateXmlMockDataTimeLine());
+            }
+        }
+
         public void EditXmlProfileData(string pAttribute, string pValue)
         {
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Profiles.xml");
             if (!File.Exists(fileName))
             {
-                File.WriteAllText(fileName, CreateXmlMockData());
+                File.WriteAllText(fileName, CreateXmlMockDataProfile());
             }
 
             XmlDocument xmlDocument = new XmlDocument();
@@ -125,7 +193,7 @@ namespace XAMLTest.Data
             }
 
             }
-        public string CreateXmlMockData()
+        public string CreateXmlMockDataProfile()
         {
             XElement contacts =
             new XElement("Profiles",
@@ -146,13 +214,44 @@ namespace XAMLTest.Data
             );
             return contacts.ToString();
         }
+        public string CreateXmlMockDataTimeLine()
+        {
+            XElement contacts =
+            new XElement("TimeLine",
+                new XElement("TimeLineProfile",
+                new XElement("ProfileImage", ""),
+                    new XElement("ProfileName", "Hugo"),
+                    new XElement("TimeLineTime", "5 minuten geleden"),
+                    new XElement("TimeLineTekst", "Je hebt geweldig gereden! Maar liefst een 9.8"),
+                    new XElement("TimeLineLikes", "231")),
+                new XElement("TimeLineProfile",
+                new XElement("ProfileImage", ""),
+                    new XElement("ProfileName", "Elias"),
+                    new XElement("TimeLineTime", "12 minuten geleden"),
+                    new XElement("TimeLineTekst", "Elias nodigd je uit om mee te doen aan een evenement"),
+                    new XElement("TimeLineLikes", "10")),
+                new XElement("TimeLineProfile",
+                new XElement("ProfileImage", ""),
+                    new XElement("ProfileName", "Kirsten"),
+                    new XElement("TimeLineTime", "30 minuten geleden"),
+                    new XElement("TimeLineTekst", "Lekker aan het carpoolen met Olivier"),
+                    new XElement("TimeLineLikes", "420")),
+                new XElement("TimeLineProfile",
+                new XElement("ProfileImage", ""),
+                    new XElement("ProfileName", "Demy"),
+                    new XElement("TimeLineTime", "1 dag geleden"),
+                    new XElement("TimeLineTekst", "Demy heeft gedeeld dat hij jou heeft ingehaald op de ranglijst voor A1 rijder"),
+                    new XElement("TimeLineLikes", "1"))
+            );
+            return contacts.ToString();
+        }
 
         public void CreateProfileData(string pUserName, string pPassword)
         {
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Profiles.xml");
             if (!File.Exists(fileName))
             {
-                File.WriteAllText(fileName, CreateXmlMockData());
+                File.WriteAllText(fileName, CreateXmlMockDataProfile());
             }
 
             XmlDocument xmlProfileDoc = new XmlDocument();
@@ -194,7 +293,7 @@ namespace XAMLTest.Data
             if (!File.Exists(fileName))
             {
 
-                File.WriteAllText(fileName, CreateXmlMockData());
+                File.WriteAllText(fileName, CreateXmlMockDataProfile());
             }
             Stream stream = File.Open(fileName, FileMode.Open);
             List<ModelsProfile> profiles = new List<ModelsProfile>();
@@ -260,9 +359,9 @@ namespace XAMLTest.Data
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Profiles.xml");
             if (!File.Exists(fileName))
             {
-                File.WriteAllText(fileName, CreateXmlMockData());
+                File.WriteAllText(fileName, CreateXmlMockDataProfile());
             }
-            string returning = CreateXmlMockData();
+            string returning = CreateXmlMockDataProfile();
             Stream stream = File.Open(fileName, FileMode.Open);
             List<ModelsProfile> profiles = new List<ModelsProfile>();
             int index = 0;

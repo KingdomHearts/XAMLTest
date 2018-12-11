@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using XAMLTest.Data;
 
 namespace XAMLTest.Views.MainMenu
@@ -13,6 +14,7 @@ namespace XAMLTest.Views.MainMenu
         public MainPage()
         {
             InitializeComponent();
+            this.BackgroundImage = "pack://application:,,,/Login6.png";
         }
 
         async void OnLoginButtonClicked(object sender, EventArgs e)
