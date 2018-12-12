@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XAMLTest.Views.MainMenu;
+using XAMLTest.Data;
+using XAMLTest.Models;
 
 public class MyNiceObject
 {
@@ -30,23 +32,32 @@ public partial class TimeLine : ContentPage
         {
 
             InitializeComponent();
+            MockData mockData = new MockData();
+            List<TimeLineData> timeLineData = mockData.GetTimeLineData();
             //aantal records in de database
-            int dynamicTestValue = 10; //This is the "dynamic" value 
-            MyNiceObject mObject;
-            List<MyNiceObject > mObjectList = new List<MyNiceObject >();
+            int dynamicTestValue = timeLineData.Count; //This is the "dynamic" value 
+            TimeLineData mObject;
+            List<TimeLineData> mObjectList = new List<TimeLineData>();
             for (int i = 0; i < dynamicTestValue; i++)
             {
                 //Ingevuld worden door een database
-                mObject = new MyNiceObject ("FullNameOfSomething", "Number" + i);
-                mObject.AdvancedInfo = "MyAdvancedInfo" + i;
+                mObject = new TimeLineData(timeLineData[i].ProfileName,timeLineData[i].TimeLineTekst, timeLineData[i].TimeLineTime);
+                //mObject.AdvancedInfo = "MyAdvancedInfo" + i;
                 mObjectList.Add(mObject);
 
             }
             TimeLineView.ItemsSource = mObjectList;
+            //var template = new DataTemplate(typeof(Label));
+            //template.SetBinding(Label.TextProperty, "ProfileName");
+            //template.SetBinding(Label.TextProperty, "TimeLineTime");
+            //template.SetBinding(Label.TextProperty, "TimeLineTekst");
+            
             var template = new DataTemplate(typeof(TextCell));
-            template.SetBinding(TextCell.TextProperty, "FullName");
-            template.SetBinding(TextCell.DetailProperty, "Number");
+            template.SetBinding(TextCell.TextProperty, "TimeLineHead");
+            //template.SetBinding(TextCell.DetailProperty, "TimeLineTime");
+            template.SetBinding(TextCell.DetailProperty, "TimeLineTekst");
             //template.SetBinding(TextCell.DetailProperty, "AdvancedInfo");
+            
             TimeLineView.ItemTemplate = template;
         }
 

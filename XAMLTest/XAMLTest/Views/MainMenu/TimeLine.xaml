@@ -22,20 +22,28 @@
             <Frame>
                 <FlexLayout FlexLayout.Grow="1">
                     <!-- Navigation items-->
-                    <Frame>
+                   
                         <FlexLayout>
-                            <Image Source="Tijdlijn18.png" />
+                            <Image Source="Tijdlijn18.png"/>
                         </FlexLayout>
-                    </Frame>
-                    <!-- Content -->
-                    <ListView x:Name="TimeLineView" BindingContext="{Binding MyNiceObject}" FlexLayout.Grow="1">
+                   
+                    
+                    <ListView x:Name="TimeLineView" BindingContext="{Binding TimeLineData}" FlexLayout.Grow="1">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextCell Text="{Binding MyNiceObject}" />
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
 
+                    <!-- Content 
+                    <ListView x:Name="TimeLineView" BindingContext="{Binding TimeLineData}" FlexLayout.Grow="1">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding TimeLineData}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+-->
 
                 </FlexLayout>
             </Frame>

@@ -43,9 +43,9 @@ namespace XAMLTest.Data
             };
         }
 
-        public void GetTimeLineData()
+        public List<TimeLineData> GetTimeLineData()
         {
-            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TimeLine"+User.UserName+".xml");
+            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TimeLine" + User.UserName + ".xml");
             if (!File.Exists(fileName))
             {
                 File.WriteAllText(fileName, CreateXmlMockDataTimeLine());
@@ -54,42 +54,42 @@ namespace XAMLTest.Data
             xmlDocument.Load(fileName);
 
             XmlNodeList aNodes = xmlDocument.GetElementsByTagName("TimeLineProfile");
-            List<TimeLine> timeLines = new List<TimeLine>();
-            TimeLine timeLine = new TimeLine();
+            List<TimeLineData> timeLines = new List<TimeLineData>();
+            Image image = new Image();
             int index = 0;
             foreach (XmlNode xmlNode in aNodes)
             {
 
-                XmlNode node = xmlDocument.GetElementsByTagName("Profile").Item(index);
+                XmlNode node = xmlDocument.GetElementsByTagName("TimeLineProfile").Item(index);
 
+                TimeLineData timeLine = new TimeLineData();
                 foreach (XmlNode item in node.ChildNodes)
                 {
-                    if ((xmlNode).NodeType == XmlNodeType.Element)
+                    if ((item).NodeType == XmlNodeType.Element)
                     {
                         //Get the Element value here
-                        if ((((xmlNode).FirstChild)) != null)
+                        if ((((item).FirstChild)) != null)
                         {
 
-                            string value = ((xmlNode).FirstChild).Value;
-                            if (xmlNode.Name == "ProfileImage")
+                            string value = ((item).FirstChild).Value;
+                            if (item.Name == "ProfileImage")
                             {
-                                Image image = new Image();
                                 image.Source = value;
                                 timeLine.ProfileImage = image;
                             }
-                            if (xmlNode.Name == "ProfileName")
+                            if (item.Name == "ProfileName")
                             {
                                 timeLine.ProfileName = value;
                             }
-                            if (xmlNode.Name == "TimeLineTime")
+                            if (item.Name == "TimeLineTime")
                             {
                                 timeLine.TimeLineTime = value;
                             }
-                            if (xmlNode.Name == "TimeLineTekst")
+                            if (item.Name == "TimeLineTekst")
                             {
                                 timeLine.TimeLineTekst = value;
                             }
-                            if (xmlNode.Name == "TimeLineLikes")
+                            if (item.Name == "TimeLineLikes")
                             {
                                 timeLine.TimeLineLikes = value;
                             }
@@ -99,6 +99,7 @@ namespace XAMLTest.Data
                 index++;
                 timeLines.Add(timeLine);
             }
+            return timeLines;
         }
 
         public void AddToTimeLineData()
