@@ -1,14 +1,23 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XAMLTest.Views.MainMenu;
+using System.Threading.Tasks;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XAMLTest
 {
     public partial class App : Application
     {
+        public static MasterDetailPage MasterDetails { get; set; }
+
+        public static void NavigationMasterDetail(Page page)
+        {
+            App.MasterDetails.IsPresented = false;
+            App.MasterDetails.Detail = new NavigationPage(page);        }
+
         public App()
         {
             InitializeComponent();

@@ -35,11 +35,11 @@ namespace XAMLTest.Data
         {
             MainMenuItems = new ObservableCollection<MainMenuItem>()
             {
-            new MainMenuItem { NavigationID = 1, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Evenementen" },
-            new MainMenuItem { NavigationID = 2, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Groepen" },
-            new MainMenuItem { NavigationID = 3, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Besparing" },
-            new MainMenuItem { NavigationID = 4, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Agenda" },
-            new MainMenuItem { NavigationID = 5, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Wijzig gegevens" }
+            new MainMenuItem { Navigationid = 1, Icon = "", ClassName = "Views.MenuPages.MainEvents", Text = "Evenementen" },
+            new MainMenuItem { Navigationid = 2, Icon = "", ClassName = "Views.MenuPages.MainGroups", Text = "Groepen" },
+            new MainMenuItem { Navigationid = 3, Icon = "", ClassName = "Views.MenuPages.MenuAgenda", Text = "Besparing" },
+            new MainMenuItem { Navigationid = 4, Icon = "", ClassName = "Views.MenuPages.MenuOptions", Text = "Agenda" },
+            new MainMenuItem { Navigationid = 5, Icon = "", ClassName = "Views.MenuPages.MenuSavings", Text = "Wijzig gegevens" }
             };
         }
 

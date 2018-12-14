@@ -15,7 +15,10 @@ namespace XAMLTest.Views.MainMenu
 		public MainMenu ()
 		{
             InitializeComponent();
-        }
+		    this.Master = new MainMenuMaster();
+		    this.Detail = new NavigationPage(new MainPage());
+            App.MasterDetails = this;
+		}
         
 	}
 
