@@ -6,10 +6,12 @@
              x:Class="XAMLTest.Views.MainMenu.TimeLine">
     
     <ContentPage.Content>
+        
             <FlexLayout Direction="Column">
                 <!-- Header -->
             <Frame TranslationY="-120">
                 <FlexLayout>
+                    <Button Text="Profile"  Clicked="OnItemClicked"/>
                 <Image Source="Tijdlijn1.png"/>
                 <Image Source="Tijdlijn2.png"/>
                 <Image Source="Tijdlijn3.png"/>

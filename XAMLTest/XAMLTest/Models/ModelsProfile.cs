@@ -10,5 +10,6 @@ using System.Text;
         public string Name;
         public string Email;
         public string Bio;
-
-    }
+    public List<string> Friends = new List<string>();
+    public List<string> Groups = new List<string>();
+}

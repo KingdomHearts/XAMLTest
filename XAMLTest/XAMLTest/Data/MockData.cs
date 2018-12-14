@@ -152,6 +152,14 @@ namespace XAMLTest.Data
                                     {
                                         if (node.ChildNodes[nodeCount].Name == pAttribute)
                                         {
+                                            
+                                            if (node.ChildNodes[nodeCount].Name == "Friends")
+                                            {
+                                                XmlNode newNode = xmlDocument.CreateNode(XmlNodeType.Element, "Name", null);
+                                                newNode.InnerText = pValue;
+                                                node.ChildNodes[nodeCount].AppendChild(newNode);
+                                                break;
+                                            }
                                             node.ChildNodes[nodeCount].InnerText = pValue;
                                             isBreak = true;
                                             break;
@@ -204,14 +212,30 @@ namespace XAMLTest.Data
                     new XElement("UserName", "Hugo"),
                     new XElement("Bio", "Ik ben Hugo en ik zal je helpen op de weg!"),
                     new XElement("Email", "Test@email"),
-                    new XElement("Password", "HugoApplication")),
+                    new XElement("Password", "HugoApplication"),
+                    new XElement("Friends",
+                        new XElement("Name", "Jessica Berent"),
+                        new XElement("Name", "Elias Jansen"),
+                        new XElement("Name", "Michael Bossink")),
+                        new XElement("Groups",
+                            new XElement("Name", "Shell"),
+                            new XElement("Name", "Starbucks"),
+                            new XElement("Name", "Curious Cockatoo"))),
                 new XElement("Profile",
                 new XElement("Name", "Bossink"),
                     new XElement("FirstName", "Michael"),
                     new XElement("UserName", "michaelbos"),
                     new XElement("Bio", "Ik ben Michael en ben een programmeur"),
                     new XElement("Email", "Test1@email"),
-                    new XElement("Password", "testing"))
+                    new XElement("Password", "testing"),
+                    new XElement("Friends",
+                        new XElement("Name", "Jessica Berent"),
+                        new XElement("Name", "Elias Jansen"),
+                        new XElement("Name", "Hugo")),
+                        new XElement("Groups",
+                            new XElement("Name", "Shell"),
+                            new XElement("Name", "Starbucks"),
+                            new XElement("Name", "Curious Cockatoo")))
             );
             return contacts.ToString();
         }
@@ -410,6 +434,54 @@ namespace XAMLTest.Data
                                 if (item.Name == "Password")
                                 {
                                     profile.Password = value;
+                                }
+                                if (item.Name == "Friends")
+                                {
+                                    //int friendIndex = 0;
+                                    XmlNode friendsNodes = doc.GetElementsByTagName("Friends").Item(index);
+                                    List<string> friends = new List<string>();
+                                    foreach (XmlNode friend in friendsNodes.ChildNodes)
+                                    {
+                                        if ((friend).NodeType == XmlNodeType.Element)
+                                        {
+                                            //Get the Element value here
+                                            if ((((friend).FirstChild)) != null)
+                                            {
+                                                string friendName = ((friend).FirstChild).Value;
+                                                if (friend.Name == "Name")
+                                                {
+                                                    friends.Add(friendName);
+                                                }
+                                            }
+                                        }
+                                        //friendIndex++;
+                                    }
+                                    profile.Friends = friends;
+                                    friends = new List<string>();
+                                }
+                                if (item.Name == "Groups")
+                                {
+                                    //int GroupIndex = 0;
+                                    XmlNode GroupNodes = doc.GetElementsByTagName("Groups").Item(index);
+                                    List<string> groups = new List<string>();
+                                    foreach (XmlNode Group in GroupNodes.ChildNodes)
+                                    {
+                                        if ((Group).NodeType == XmlNodeType.Element)
+                                        {
+                                            //Get the Element value here
+                                            if ((((Group).FirstChild)) != null)
+                                            {
+                                                string GroupName = ((Group).FirstChild).Value;
+                                                if (Group.Name == "Name")
+                                                {
+                                                    groups.Add(GroupName);
+                                                }
+                                            }
+                                        }
+                                        //GroupIndex++;
+                                    }
+                                    profile.Groups = groups;
+                                    groups = new List<string>();
                                 }
                             }
                         }
