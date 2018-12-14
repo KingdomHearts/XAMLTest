@@ -19,7 +19,7 @@ namespace XAMLTest
             //ProfileAchievements.
             ProfileBiography.Text = thisProfile.Bio;
             ProfileName.Text = thisProfile.FirstName + " " + thisProfile.Name;
-            
+            //data.EditXmlProfileData("Gameshops", "XXXEroticaShop");
         }
 	}
 }

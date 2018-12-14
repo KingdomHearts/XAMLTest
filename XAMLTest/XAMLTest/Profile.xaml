@@ -4,7 +4,7 @@
              NavigationPage.HasNavigationBar="false"
              x:Class="XAMLTest.Profile">
     <ContentPage.Content>
-        <StackLayout>
+        <Grid>
             <Label x:Name="ProfileName" Text="Someones Profile" />
             <Label x:Name="ProfileLevel" Text="Level 6" />
             <Image x:Name="ProfileImage" />
@@ -22,6 +22,6 @@
             <!--<BoxView x:Name="ProfileGroups" BackgroundColor="Violet" />-->
             <!--<BoxView x:Name="ProfileHugo" BackgroundColor="Blue" />-->
             
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

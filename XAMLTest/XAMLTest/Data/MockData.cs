@@ -10,17 +10,15 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
-using JetBrains.Annotations;
+using Xamarin.Forms;
 using XAMLTest.Models;
 
 namespace XAMLTest.Data
 {
-    public class MockData 
+    public class MockData : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-
-
-        [NotifyPropertyChangedInvocator]
+       
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -37,28 +35,166 @@ namespace XAMLTest.Data
         {
             MainMenuItems = new ObservableCollection<MainMenuItem>()
             {
-            new MainMenuItem { Navigationid = 1, Icon = "", ClassName = "Views.MainMenu.MenuEvents", Text = "Evenementen" },
-            new MainMenuItem { Navigationid = 2, Icon = "", ClassName = "Views.MainMenu.MenuGroups", Text = "Groepen" },
-            new MainMenuItem { Navigationid = 3, Icon = "", ClassName = "Views.MainMenu.MenuSavings", Text = "Besparing" },
-            new MainMenuItem { Navigationid = 4, Icon = "", ClassName = "Views.MainMenu.MenuAgenda", Text = "Agenda" },
-            new MainMenuItem { Navigationid = 5, Icon = "", ClassName = "Views.MainMenu.MenuOptions", Text = "Wijzig gegevens" }
+            new MainMenuItem { NavigationID = 1, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Evenementen" },
+            new MainMenuItem { NavigationID = 2, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Groepen" },
+            new MainMenuItem { NavigationID = 3, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Besparing" },
+            new MainMenuItem { NavigationID = 4, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Agenda" },
+            new MainMenuItem { NavigationID = 5, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Wijzig gegevens" }
             };
         }
 
-        public void EditXmlProfileData(string pUserName)
+        public List<TimeLineData> GetTimeLineData()
+        {
+            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TimeLine" + User.UserName + ".xml");
+            if (!File.Exists(fileName))
+            {
+                File.WriteAllText(fileName, CreateXmlMockDataTimeLine());
+            }
+            XmlDocument xmlDocument = new XmlDocument();
+            xmlDocument.Load(fileName);
+
+            XmlNodeList aNodes = xmlDocument.GetElementsByTagName("TimeLineProfile");
+            List<TimeLineData> timeLines = new List<TimeLineData>();
+            Image image = new Image();
+            int index = 0;
+            foreach (XmlNode xmlNode in aNodes)
+            {
+
+                XmlNode node = xmlDocument.GetElementsByTagName("TimeLineProfile").Item(index);
+
+                TimeLineData timeLine = new TimeLineData();
+                foreach (XmlNode item in node.ChildNodes)
+                {
+                    if ((item).NodeType == XmlNodeType.Element)
+                    {
+                        //Get the Element value here
+                        if ((((item).FirstChild)) != null)
+                        {
+
+                            string value = ((item).FirstChild).Value;
+                            if (item.Name == "ProfileImage")
+                            {
+                                image.Source = value;
+                                timeLine.ProfileImage = image;
+                            }
+                            if (item.Name == "ProfileName")
+                            {
+                                timeLine.ProfileName = value;
+                            }
+                            if (item.Name == "TimeLineTime")
+                            {
+                                timeLine.TimeLineTime = value;
+                            }
+                            if (item.Name == "TimeLineTekst")
+                            {
+                                timeLine.TimeLineTekst = value;
+                            }
+                            if (item.Name == "TimeLineLikes")
+                            {
+                                timeLine.TimeLineLikes = value;
+                            }
+                        }
+                    }
+                }
+                index++;
+                timeLines.Add(timeLine);
+            }
+            return timeLines;
+        }
+
+        public void AddToTimeLineData()
+        {
+            string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "TimeLine" + User.UserName + ".xml");
+            if (!File.Exists(fileName))
+            {
+                File.WriteAllText(fileName, CreateXmlMockDataTimeLine());
+            }
+        }
+
+        public void EditXmlProfileData(string pAttribute, string pValue)
         {
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Profiles.xml");
             if (!File.Exists(fileName))
             {
-                File.WriteAllText(fileName, CreateXmlMockData());
+                File.WriteAllText(fileName, CreateXmlMockDataProfile());
             }
 
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(fileName);
 
+            XmlNodeList aNodes = xmlDocument.GetElementsByTagName("Profile");
 
-        }
-        public string CreateXmlMockData()
+            int indexNodes = 0;
+            int index = 0;
+            bool isBreak = false;
+            // loop through all AID nodes
+            foreach (XmlNode aNode in aNodes)
+            {
+
+                // check if that attribute even exists...
+                XmlNode node = xmlDocument.GetElementsByTagName("Profile").Item(index);
+                //Loop through the child nodes
+                foreach (XmlNode item in node.ChildNodes)
+                {
+                    if ((item).NodeType == XmlNodeType.Element)
+                    {
+                        //Get the Element value here
+                        if ((((item).FirstChild)) != null)
+                        {
+
+                            string value = ((item).FirstChild).Value;
+                            //Console.WriteLine("Element Value = " + value);
+                            if (item.Name == "UserName")
+                            {
+                                if (value == User.UserName)
+                                {
+                                    for (int nodeCount = 0; nodeCount < node.ChildNodes.Count; nodeCount++)
+                                    {
+                                        if (node.ChildNodes[nodeCount].Name == pAttribute)
+                                        {
+                                            node.ChildNodes[nodeCount].InnerText = pValue;
+                                            isBreak = true;
+                                            break;
+                                        }
+                                        if ((nodeCount+1) == node.ChildNodes.Count)
+                                        {
+                                            XmlNode newNode = xmlDocument.CreateNode(XmlNodeType.Element, pAttribute, null);
+                                            newNode.InnerText = pValue;
+                                            aNode.AppendChild(newNode);
+                                            //newNode.AppendChild(node);
+                                            //xmlDocument.DocumentElement.AppendChild(newNode);
+                                            isBreak = true;
+                                            break;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (isBreak)
+                    {
+                        break;
+                    }
+                    indexNodes++;
+                }
+                if (isBreak)
+                {
+                    break;
+                }
+                index++;
+            }
+            xmlDocument.Save(fileName);
+
+            Stream stream = File.Open(fileName, FileMode.Open);
+            using (var reader = new System.IO.StreamReader(stream))
+            {
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(reader.ReadToEnd());
+                string test = "";
+            }
+
+            }
+        public string CreateXmlMockDataProfile()
         {
             XElement contacts =
             new XElement("Profiles",
@@ -79,13 +215,44 @@ namespace XAMLTest.Data
             );
             return contacts.ToString();
         }
+        public string CreateXmlMockDataTimeLine()
+        {
+            XElement contacts =
+            new XElement("TimeLine",
+                new XElement("TimeLineProfile",
+                new XElement("ProfileImage", ""),
+                    new XElement("ProfileName", "Hugo"),
+                    new XElement("TimeLineTime", "5 minuten geleden"),
+                    new XElement("TimeLineTekst", "Je hebt geweldig gereden! Maar liefst een 9.8"),
+                    new XElement("TimeLineLikes", "231")),
+                new XElement("TimeLineProfile",
+                new XElement("ProfileImage", ""),
+                    new XElement("ProfileName", "Elias"),
+                    new XElement("TimeLineTime", "12 minuten geleden"),
+                    new XElement("TimeLineTekst", "Elias nodigd je uit om mee te doen aan een evenement"),
+                    new XElement("TimeLineLikes", "10")),
+                new XElement("TimeLineProfile",
+                new XElement("ProfileImage", ""),
+                    new XElement("ProfileName", "Kirsten"),
+                    new XElement("TimeLineTime", "30 minuten geleden"),
+                    new XElement("TimeLineTekst", "Lekker aan het carpoolen met Olivier"),
+                    new XElement("TimeLineLikes", "420")),
+                new XElement("TimeLineProfile",
+                new XElement("ProfileImage", ""),
+                    new XElement("ProfileName", "Demy"),
+                    new XElement("TimeLineTime", "1 dag geleden"),
+                    new XElement("TimeLineTekst", "Demy heeft gedeeld dat hij jou heeft ingehaald op de ranglijst voor A1 rijder"),
+                    new XElement("TimeLineLikes", "1"))
+            );
+            return contacts.ToString();
+        }
 
         public void CreateProfileData(string pUserName, string pPassword)
         {
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Profiles.xml");
             if (!File.Exists(fileName))
             {
-                File.WriteAllText(fileName, CreateXmlMockData());
+                File.WriteAllText(fileName, CreateXmlMockDataProfile());
             }
 
             XmlDocument xmlProfileDoc = new XmlDocument();
@@ -127,7 +294,7 @@ namespace XAMLTest.Data
             if (!File.Exists(fileName))
             {
 
-                File.WriteAllText(fileName, CreateXmlMockData());
+                File.WriteAllText(fileName, CreateXmlMockDataProfile());
             }
             Stream stream = File.Open(fileName, FileMode.Open);
             List<ModelsProfile> profiles = new List<ModelsProfile>();
@@ -193,9 +360,9 @@ namespace XAMLTest.Data
             string fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Profiles.xml");
             if (!File.Exists(fileName))
             {
-                File.WriteAllText(fileName, CreateXmlMockData());
+                File.WriteAllText(fileName, CreateXmlMockDataProfile());
             }
-            string returning = CreateXmlMockData();
+            string returning = CreateXmlMockDataProfile();
             Stream stream = File.Open(fileName, FileMode.Open);
             List<ModelsProfile> profiles = new List<ModelsProfile>();
             int index = 0;

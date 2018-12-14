@@ -6,17 +6,67 @@
              NavigationPage.HasNavigationBar="True">
     
     <ContentPage.Content>
-        <StackLayout Padding="5,10" x:Name="layout">
+            <FlexLayout Direction="Column">
+                <!-- Header -->
+            <Frame TranslationY="-120">
+                <FlexLayout>
+                <Image Source="Tijdlijn1.png"/>
+                <Image Source="Tijdlijn2.png"/>
+                <Image Source="Tijdlijn3.png"/>
+                </FlexLayout>
+            </Frame>
+            <Frame>
             <Entry x:Name="TimelineTweet" Placeholder="Wat wil je delen?" MaxLength="140" />
-            <Button Text="Profile"  Clicked="OnItemClicked"/><!--<ListView x:Name="TimeLineView" ItemsSource=""></ListView>-->
+            </Frame>
+            <!-- Body -->
+            <Frame>
+                <FlexLayout FlexLayout.Grow="1">
+                    <!-- Navigation items-->
+                   
+                        <FlexLayout>
+                            <Image Source="Tijdlijn18.png"/>
+                        </FlexLayout>
+                   
+                    
+                    <ListView x:Name="TimeLineView" BindingContext="{Binding TimeLineData}" FlexLayout.Grow="1">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Content 
+                    <ListView x:Name="TimeLineView" BindingContext="{Binding TimeLineData}" FlexLayout.Grow="1">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell Text="{Binding TimeLineData}" />
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+-->
+
+                </FlexLayout>
+            </Frame>
+            <!-- Footer -->
+            <Frame>
+                <FlexLayout>
+                    <Image Source="Tijdlijn4.png" />
+                    <Image Source="Tijdlijn5.png" />
+                    <Image Source="Tijdlijn6.png" />
+                    <Image Source="Tijdlijn7.png" />
+                </FlexLayout>
+            </Frame>
+        </FlexLayout>
+            <!--
+            <Entry x:Name="TimelineTweet" Placeholder="Wat wil je delen?" MaxLength="140" />
+            <Button Text="Profile"  Clicked="OnItemClicked"/><ListView x:Name="TimeLineView" ItemsSource=""></ListView>
             <ListView x:Name="TimeLineView" BindingContext="{Binding MyNiceObject}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <TextCell Text="{Binding MyNiceObject}" />
                     </DataTemplate>
                 </ListView.ItemTemplate>
-            </ListView>
-        </StackLayout>
+            </ListView> -->
     </ContentPage.Content>
     
 </ContentPage>

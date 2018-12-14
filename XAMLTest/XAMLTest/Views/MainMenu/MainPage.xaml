@@ -6,13 +6,25 @@
              x:Class="XAMLTest.Views.MainMenu.MainPage">
 
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout x:Name="StackLayout">
-            <Image TranslationY="-50" ScaleX="0.6" ScaleY="0.7" Source="pack://application:,,,/hugo.png" />
-            <Entry TranslationY="-50" x:Name="usernameEntry" Placeholder="Username"/>
-            <Entry TranslationY="-50" x:Name="passwordEntry" IsPassword="True" Placeholder="Password"/>
-            <Button TranslationY="-50" Text="Volgende" Clicked="OnLoginButtonClicked"/>
-            <Button TranslationY="-50" Text="Ik ben nog geen lid" Clicked="OnRegisterButtonClicked"/>
+            <Image TranslationY="-70" ScaleX="0.7" ScaleY="0.8" Source="pack://application:,,,/hugo.png" />
+            <Image TranslationY="-130" Scale="0.8" Source="pack://application:,,,/Login1.png"/>
+            <Entry TranslationY="-190" HorizontalOptions="Start" WidthRequest="200" TranslationX="90" x:Name="usernameEntry" Placeholder=""/>
+            <Image TranslationY="-190" Scale="0.8" Source="pack://application:,,,/Login2.png" />
+            <Entry TranslationY="-250" HorizontalOptions="Start" WidthRequest="200" TranslationX="90" x:Name="passwordEntry" IsPassword="True" Placeholder=""/>
+            <Image TranslationY="-230" Source="pack://application:,,,/Login3.png" Scale="0.8">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnLoginButtonClicked" NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+            </Image>
+            <Image TranslationY="-180" Source="pack://application:,,,/Login4.png">
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnRegisterButtonClicked" NumberOfTapsRequired="1"/>
+                </Image.GestureRecognizers>
+            </Image>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 
 </ContentPage>
