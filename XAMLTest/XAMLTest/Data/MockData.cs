@@ -10,14 +10,17 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 using System.Xml.XPath;
+using JetBrains.Annotations;
 using XAMLTest.Models;
 
 namespace XAMLTest.Data
 {
-    public class MockData : INotifyPropertyChanged
+    public class MockData 
     {
         public event PropertyChangedEventHandler PropertyChanged;
-       
+
+
+        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -34,11 +37,11 @@ namespace XAMLTest.Data
         {
             MainMenuItems = new ObservableCollection<MainMenuItem>()
             {
-            new MainMenuItem { NavigationID = 1, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Evenementen" },
-            new MainMenuItem { NavigationID = 2, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Groepen" },
-            new MainMenuItem { NavigationID = 3, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Besparing" },
-            new MainMenuItem { NavigationID = 4, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Agenda" },
-            new MainMenuItem { NavigationID = 5, Icon = "", ClassName = "Views.MainMenu.MainMenuDetail", Text = "Wijzig gegevens" }
+            new MainMenuItem { Navigationid = 1, Icon = "", ClassName = "Views.MainMenu.MenuEvents", Text = "Evenementen" },
+            new MainMenuItem { Navigationid = 2, Icon = "", ClassName = "Views.MainMenu.MenuGroups", Text = "Groepen" },
+            new MainMenuItem { Navigationid = 3, Icon = "", ClassName = "Views.MainMenu.MenuSavings", Text = "Besparing" },
+            new MainMenuItem { Navigationid = 4, Icon = "", ClassName = "Views.MainMenu.MenuAgenda", Text = "Agenda" },
+            new MainMenuItem { Navigationid = 5, Icon = "", ClassName = "Views.MainMenu.MenuOptions", Text = "Wijzig gegevens" }
             };
         }
 

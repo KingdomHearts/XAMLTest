@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
 using XAMLTest.ViewModels;
+using XAMLTest.Views.MenuPages;
 using XAMLTest.Models;
 
 
@@ -29,15 +30,38 @@ namespace XAMLTest.Views.MainMenu
             ListView = MenuItemsListView;
         }
 
-        private void MenuItemListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        private async void MenuItemListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as MainMenuItem;
             if (item == null)
             {
+
+                Console.WriteLine("item is null");
                 return;
             }
+            
+            switch (item.Text)
+            {
+                case "Evenementen":
+                     App.NavigationMasterDetail(new MainEvents());
+                    break;
+                case "Groepen":
+                     App.NavigationMasterDetail(new MainGroups());
+                    break;
+                case "Besparing":
+                     App.NavigationMasterDetail(new MenuSavings());
+                    break;
+                case "Agenda":
+                     App.NavigationMasterDetail(new MenuAgenda());
+                    break;
+                case "Wijzig gegevens":
+                     App.NavigationMasterDetail(new MenuOptions());
+                    break;
+                default:
+                    App.NavigationMasterDetail(new TimeLine());
+                    break;
+            }
 
-            _model.MenuItemTapped(item);
         }
     }
 }

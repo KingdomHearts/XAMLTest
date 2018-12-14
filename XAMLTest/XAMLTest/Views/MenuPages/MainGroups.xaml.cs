@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace XAMLTest.Views.MainMenu
+namespace XAMLTest.Views.MenuPages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MainMenuDetail : ContentPage
+	public partial class MainGroups : ContentPage
 	{
-		public MainMenuDetail ()
+		public MainGroups ()
 		{
 			InitializeComponent ();
 		}

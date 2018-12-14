@@ -1,14 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XAMLTest.Views.MainMenu.MainMenuMaster"
+             NavigationPage.HasNavigationBar="True"
              Title="Master">
-    <StackLayout>
+    <StackLayout VerticalOptions="Start" 
+        HorizontalOptions="FillAndExpand" 
+        Orientation="Horizontal"          
+        Padding="10,10,10,10">
         <ListView x:Name="MenuItemsListView"
                 SeparatorVisibility="None"
                 HasUnevenRows="True"
                 ItemsSource="{Binding MenuItems}"
-                ItemTapped="MenuItemListView_OnItemTapped">
+            ItemTapped="MenuItemListView_OnItemTapped">
             <ListView.Header>
                 <Grid HeightRequest="100" BackgroundColor="#03A9F4" Padding="0">
                     <Image Source="hugo.png"

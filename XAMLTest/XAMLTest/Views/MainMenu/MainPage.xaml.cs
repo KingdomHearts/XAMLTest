@@ -31,7 +31,9 @@ namespace XAMLTest.Views.MainMenu
                     //[System.CodeDom.Compiler.GeneratedCodeAttribute("")]
                     //MainPage = new NavigationPage (new TimeLine());
                     //await NavigationPage.  //.PushAsync(new TimeLine());
-                    await Navigation.PushAsync(new TimeLine());
+
+                    App.NavigationMasterDetail(new TimeLine());
+
                 }
            
             }
@@ -43,7 +45,7 @@ namespace XAMLTest.Views.MainMenu
         
 
         }
-        async void OnRegisterButtonClicked(object sender, EventArgs e)
+        void OnRegisterButtonClicked(object sender, EventArgs e)
         {
             XAMLTest.Data.MockData mockData = new Data.MockData();
 

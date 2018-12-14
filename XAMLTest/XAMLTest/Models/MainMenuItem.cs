@@ -6,7 +6,7 @@ namespace XAMLTest.Models
 {
     public class MainMenuItem
     {
-        public int NavigationID { get; set; }
+        public int Navigationid { get; set; }
 
         public string Text { get; set; }
 
