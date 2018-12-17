@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XAMLTest.Views.MainMenu"
              x:Class="XAMLTest.Views.MainMenu.TimeLine"
-             NavigationPage.HasNavigationBar="True">
+             NavigationPage.HasNavigationBar="False">
     
     <Button Text="profile" Clicked="OnItemClicked" />
     <!--

@@ -6,17 +6,15 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XAMLTest.Views.MainMenu;
 
-namespace XAMLTest.Views.MenuPages
+namespace XAMLTest.Views.MainMenu
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MainEvents : ContentPage
+	public partial class RidePage : ContentPage
 	{
-		public MainEvents ()
+		public RidePage ()
 		{
 			InitializeComponent ();
-            
-        }
+		}
 	}
 }

@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using XAMLTest.Views.MainMenu;
 
 namespace XAMLTest.Views.MenuPages
 {
@@ -15,6 +16,7 @@ namespace XAMLTest.Views.MenuPages
 		public MenuSavings ()
 		{
 			InitializeComponent ();
+		    
 		}
 	}
 }
