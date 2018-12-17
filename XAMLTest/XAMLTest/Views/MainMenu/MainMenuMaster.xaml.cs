@@ -30,6 +30,7 @@ namespace XAMLTest.Views.MainMenu
             ListView = MenuItemsListView;
         }
 
+
         private async void MenuItemListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
             var item = e.Item as MainMenuItem;
