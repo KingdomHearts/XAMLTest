@@ -59,20 +59,21 @@ namespace XAMLTest
             }
         }
 
-       // async void AddFriendView(object sender, EventArgs e)
-        //{
+        async void AddFriendView(object sender, EventArgs e)
+        {
+            overlay.IsVisible = true;
             //popupName.IsVisible = true;
             //await Navigation.PushAsync(new Profile());
-        //}
-        async void AddFriendView(object sender, EventArgs e)
+        }
+        async void AddFriend(object sender, EventArgs e)
         {
             //popupName.IsVisible = true;
 
             MockData data = new MockData();
-            data.EditXmlProfileData("Friends", "Henk Pestra");
+            data.EditXmlProfileData("Friends", FriendsName.Text);
             ModelsProfile thisProfile = data.GetProfileData(User.UserName);
             ProfileFriendsAmount.Text = "Vrienden - " + thisProfile.Friends.Count.ToString();
-            //popupName.IsVisible = false;
+            overlay.IsVisible = false;
             //await Navigation.PushAsync(new Profile());
         }
     }

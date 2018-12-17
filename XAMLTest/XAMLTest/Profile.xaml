@@ -8,7 +8,7 @@
     <ContentPage.Content>
 
         <ScrollView>
-            
+
             <Grid>
 
                 <Grid.ColumnDefinitions>
@@ -61,9 +61,24 @@
                 <!--<BoxView x:Name="ProfileBiography" BackgroundColor="White" />-->
                 <!--<BoxView x:Name="ProfileGroups" BackgroundColor="Violet" />-->
                 <!--<BoxView x:Name="ProfileHugo" BackgroundColor="Blue" />-->
+                <FlexLayout x:Name="overlay"
+                            Grid.ColumnSpan="2"
+                            Grid.RowSpan="5"
+                   AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   IsVisible="False"
+                   BackgroundColor="#C0808080"
+                   Padding="10, 0">
+                    <StackLayout>
+                    <Label Text="Voeg hier de naam van je vriend in." TextColor="White" />
+                        <Entry x:Name="FriendsName" Placeholder="Naam vriend" TextColor="White" />
+                    <Button Text="Voeg vriend toe!" Clicked="AddFriend" />
+                    </StackLayout>
+                    <!-- Overlay -->
+                </FlexLayout>
             </Grid>
         </ScrollView>
-        
+
     </ContentPage.Content>
 
 </ContentPage>

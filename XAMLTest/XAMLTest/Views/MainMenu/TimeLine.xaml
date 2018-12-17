@@ -6,38 +6,39 @@
              NavigationPage.HasNavigationBar="True">
     
     <ContentPage.Content>
-        
+        <Grid>
+            
             <FlexLayout Direction="Column">
                 <!-- Header -->
-            <Frame TranslationY="-120">
-                <FlexLayout>
-                    <Button Text="Profile"  Clicked="OnItemClicked"/>
-                <Image Source="Tijdlijn1.png"/>
-                <Image Source="Tijdlijn2.png"/>
-                <Image Source="Tijdlijn3.png"/>
-                </FlexLayout>
-            </Frame>
-            <Frame>
-            <Entry x:Name="TimelineTweet" Placeholder="Wat wil je delen?" MaxLength="140" />
-            </Frame>
-            <!-- Body -->
-            <Frame>
-                <FlexLayout FlexLayout.Grow="1">
-                    <!-- Navigation items-->
-                   
+                <Frame TranslationY="-120">
+                    <FlexLayout>
+                        <Button Text="Profile"  Clicked="OnItemClicked"/>
+                        <Image Source="Tijdlijn1.png"/>
+                        <Image Source="Tijdlijn2.png"/>
+                        <Image Source="Tijdlijn3.png"/>
+                    </FlexLayout>
+                </Frame>
+                <Frame>
+                    <Entry x:Name="TimelineTweet" Placeholder="Wat wil je delen?" MaxLength="140" />
+                </Frame>
+                <!-- Body -->
+                <Frame>
+                    <FlexLayout FlexLayout.Grow="1">
+                        <!-- Navigation items-->
+
                         <FlexLayout>
                             <Image Source="Tijdlijn18.png"/>
                         </FlexLayout>
-                   
-                    
-                    <ListView x:Name="TimeLineView" BindingContext="{Binding TimeLineData}" FlexLayout.Grow="1">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
 
-                    <!-- Content 
+
+                        <ListView x:Name="TimeLineView" BindingContext="{Binding TimeLineData}" FlexLayout.Grow="1">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+                        <!-- Content 
                     <ListView x:Name="TimeLineView" BindingContext="{Binding TimeLineData}" FlexLayout.Grow="1">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -47,18 +48,18 @@
                     </ListView>
 -->
 
-                </FlexLayout>
-            </Frame>
-            <!-- Footer -->
-            <Frame>
-                <FlexLayout>
-                    <Image Source="Tijdlijn4.png" />
-                    <Image Source="Tijdlijn5.png" />
-                    <Image Source="Tijdlijn6.png" />
-                    <Image Source="Tijdlijn7.png" />
-                </FlexLayout>
-            </Frame>
-        </FlexLayout>
+                    </FlexLayout>
+                </Frame>
+                <!-- Footer -->
+                <Frame>
+                    <FlexLayout>
+                        <Image Source="Tijdlijn4.png" />
+                        <Image Source="Tijdlijn5.png" />
+                        <Image Source="Tijdlijn6.png" />
+                        <Image Source="Tijdlijn7.png" />
+                    </FlexLayout>
+                </Frame>
+            </FlexLayout>
             <!--
             <Entry x:Name="TimelineTweet" Placeholder="Wat wil je delen?" MaxLength="140" />
             <Button Text="Profile"  Clicked="OnItemClicked"/><ListView x:Name="TimeLineView" ItemsSource=""></ListView>
@@ -69,6 +70,7 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView> -->
+        </Grid>
     </ContentPage.Content>
     
 </ContentPage>
