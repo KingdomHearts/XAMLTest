@@ -5,7 +5,6 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using Android.Content.Res;
 using JetBrains.Annotations;
 using XAMLTest.Data;
 using XAMLTest.Models;

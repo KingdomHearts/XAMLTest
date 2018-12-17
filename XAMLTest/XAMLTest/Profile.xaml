@@ -3,25 +3,82 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              NavigationPage.HasNavigationBar="false"
              x:Class="XAMLTest.Profile">
-    <ContentPage.Content>
-        <Grid>
-            <Label x:Name="ProfileName" Text="Someones Profile" />
-            <Label x:Name="ProfileLevel" Text="Level 6" />
-            <Image x:Name="ProfileImage" />
-            <ProgressBar x:Name="ProfileProgress" />
-            <Switch IsToggled="false" />
 
-            <Label BackgroundColor="Blue" x:Name="ProfileAchievements">Kan hier ook tekst?</Label>
-            <Label BackgroundColor="Blue" x:Name="ProfileFriends">Kan hier ook tekst?</Label>
-            <Label BackgroundColor="White" x:Name="ProfileBiography">Kan hier ook tekst?</Label>
-            <Label BackgroundColor="Violet" x:Name="ProfileGroups">Kan hier ook tekst?</Label>
-            <Label BackgroundColor="Blue" x:Name="ProfileHugo">Kan hier ook tekst?</Label>
-            <!--<BoxView x:Name="ProfileAchievements"   BackgroundColor="Blue" />-->
-            <!--<BoxView x:Name="ProfileFriends" BackgroundColor="Blue" />-->
-            <!--<BoxView x:Name="ProfileBiography" BackgroundColor="White" />-->
-            <!--<BoxView x:Name="ProfileGroups" BackgroundColor="Violet" />-->
-            <!--<BoxView x:Name="ProfileHugo" BackgroundColor="Blue" />-->
-            
-        </Grid>
+
+    <ContentPage.Content>
+
+        <ScrollView>
+
+            <Grid>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="0" Grid.Row="0" x:Name="ProfileName" Text="Someones Profile" />
+                <Label Grid.Column="1" Grid.Row="1" x:Name="ProfileLevel" Text="Level 6" />
+                <Image Source="Profiel4.png" Aspect="AspectFit" Grid.Column="0" Grid.Row="1" x:Name="ProfileImage" />
+                <ProgressBar Grid.Column="1" Grid.Row="1" x:Name="ProfileProgress" />
+                <Switch Grid.Column="0" Grid.Row="2"  IsToggled="false" />
+
+                <Label Grid.Column="0" Grid.Row="3" BackgroundColor="Blue" x:Name="ProfileAchievements" TextColor="White" >Kan hier ook tekst?</Label>
+
+                <Label Grid.Column="0" Grid.Row="4" BackgroundColor="Blue" x:Name="ProfileFriendsAmount" TextColor="White"></Label>
+
+                <Image TranslationY="-50" TranslationX="50" Grid.Column="0" Grid.Row="4" Source="Profiel11.png" Scale="0.3">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="AddFriendView" NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image TranslationX="-50" Grid.Column="0" Grid.Row="4" Source="Profiel12.png" Scale="0.3">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnPreviousFriend" NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Image Grid.Column="0" Grid.Row="4" Source="Profiel14.png" Scale="0.3"></Image>
+                <Image TranslationX="50" Grid.Column="0" Grid.Row="4" Source="Profiel13.png" Scale="0.3">
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnNextFriend" NumberOfTapsRequired="1"/>
+                    </Image.GestureRecognizers>
+                </Image>
+                <Label TranslationY="100" Grid.Column="0" Grid.Row="4" x:Name="ProfileFriends" TextColor="White"></Label>
+
+                <Label Grid.Column="1" Grid.Row="2" BackgroundColor="White" x:Name="ProfileBiography">Kan hier ook tekst?</Label>
+                <Label Grid.Column="1" Grid.Row="3" BackgroundColor="Violet" x:Name="ProfileHugo">Kan hier ook tekst?</Label>
+                <Label Grid.Column="1" Grid.Row="4" BackgroundColor="Blue" x:Name="ProfileGroups" TextColor="White">Kan hier ook tekst?</Label>
+                <Image TranslationX="-50" Grid.Column="1" Grid.Row="4" Source="Profiel16.png" Scale="0.2"></Image>
+                <Image Grid.Column="1" Grid.Row="4" Source="Profiel17.png" Scale="0.2"></Image>
+                <Image TranslationX="50" Grid.Column="1" Grid.Row="4" Source="Profiel11.png" Scale="0.2"></Image>
+                <!--<BoxView x:Name="ProfileAchievements"   BackgroundColor="Blue" />-->
+                <!--<BoxView x:Name="ProfileFriends" BackgroundColor="Blue" />-->
+                <!--<BoxView x:Name="ProfileBiography" BackgroundColor="White" />-->
+                <!--<BoxView x:Name="ProfileGroups" BackgroundColor="Violet" />-->
+                <!--<BoxView x:Name="ProfileHugo" BackgroundColor="Blue" />-->
+                <FlexLayout x:Name="overlay"
+                            Grid.ColumnSpan="2"
+                            Grid.RowSpan="5"
+                   AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   IsVisible="False"
+                   BackgroundColor="#C0808080"
+                   Padding="10, 0">
+                    <StackLayout>
+                    <Label Text="Voeg hier de naam van je vriend in." TextColor="White" />
+                        <Entry x:Name="FriendsName" Placeholder="Naam vriend" TextColor="White" />
+                    <Button Text="Voeg vriend toe!" Clicked="AddFriend" />
+                    </StackLayout>
+                    <!-- Overlay -->
+                </FlexLayout>
+            </Grid>
+        </ScrollView>
+
     </ContentPage.Content>
+
 </ContentPage>

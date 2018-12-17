@@ -10,9 +10,9 @@
         <StackLayout x:Name="StackLayout">
             <Image TranslationY="-70" ScaleX="0.7" ScaleY="0.8" Source="pack://application:,,,/hugo.png" />
             <Image TranslationY="-130" Scale="0.8" Source="pack://application:,,,/Login1.png"/>
-            <Entry TranslationY="-190" HorizontalOptions="Start" WidthRequest="200" TranslationX="90" x:Name="usernameEntry" Placeholder=""/>
+                <Entry TranslationY="-200" HorizontalOptions="Start" WidthRequest="200" TranslationX="90" x:Name="usernameEntry" Text="michaelbos"/>
             <Image TranslationY="-190" Scale="0.8" Source="pack://application:,,,/Login2.png" />
-            <Entry TranslationY="-250" HorizontalOptions="Start" WidthRequest="200" TranslationX="90" x:Name="passwordEntry" IsPassword="True" Placeholder=""/>
+            <Entry TranslationY="-260" HorizontalOptions="Start" WidthRequest="200" TranslationX="90" x:Name="passwordEntry" IsPassword="True" Text="testing"/>
             <Image TranslationY="-230" Source="pack://application:,,,/Login3.png" Scale="0.8">
                 <Image.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnLoginButtonClicked" NumberOfTapsRequired="1"/>
