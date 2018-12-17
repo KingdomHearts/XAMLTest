@@ -46,7 +46,10 @@ public partial class TimeLine : ContentPage
                 mObjectList.Add(mObject);
 
             }
-            TimeLineView.ItemsSource = mObjectList;
+
+            //TimeLineView.ItemsSource = mObjectList;
+
+
             //var template = new DataTemplate(typeof(Label));
             //template.SetBinding(Label.TextProperty, "ProfileName");
             //template.SetBinding(Label.TextProperty, "TimeLineTime");
@@ -58,7 +61,7 @@ public partial class TimeLine : ContentPage
             template.SetBinding(TextCell.DetailProperty, "TimeLineTekst");
             //template.SetBinding(TextCell.DetailProperty, "AdvancedInfo");
             
-            TimeLineView.ItemTemplate = template;
+            //TimeLineView.ItemTemplate = template;
         }
 
         async void OnItemClicked(object sender, EventArgs e)
