@@ -5,10 +5,64 @@
              NavigationPage.HasNavigationBar="True">
             
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!This is Savings"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <AbsoluteLayout>
+           
+
+            <Image Source="Besparingen2.png"
+                AbsoluteLayout.LayoutBounds="0,30,175,175"/>
+
+            <Image Source="Besparingen3.png"               
+                   AbsoluteLayout.LayoutBounds="170,120,200,200"
+                   ScaleX="1.4"
+                   ScaleY="1.4"/>
+
+            <Label
+                FormattedText="• Ik geef op de kaart aan wat de prijzen zijn bij een tankstation."
+                AbsoluteLayout.LayoutBounds="160,90,250,200"
+                TextColor="DarkBlue" 
+                ScaleX="0.9">
+            </Label>
+            <Label
+                FormattedText="• Ik zorg ervoor dat je zo zuinig mgelijk rijdt door je te coachen tijdens je rit."
+                AbsoluteLayout.LayoutBounds="160,130,250,200"
+                TextColor="DarkBlue"
+                ScaleX="0.9">
+            </Label>
+
+            <Label
+                FormattedText="• Ik zorg voor CO2-uitstoot vermindering."
+                AbsoluteLayout.LayoutBounds="160,170,250,200"
+                TextColor="DarkBlue"
+                ScaleX="0.9">
+            </Label>
+
+            <Label
+                FormattedText="• Doordat je zo zuinig rijdt bespaar je ook op reparatie- en onderhoudskosten."
+                TextColor="DarkBlue"
+                AbsoluteLayout.LayoutBounds="160,210,250,200"
+                ScaleX="0.9">
+            </Label>
+
+            <Label FormattedText="Samen zorgen we voor een beter mileu en besparen we geld!"
+                   TextColor="Pink"
+                   AbsoluteLayout.LayoutBounds="160,250,250,200"
+                   ScaleX="0.9">
+            </Label>
+
+            <Image Source="Besparingen4.png"
+                 AbsoluteLayout.LayoutBounds="225,290,160,160"
+                   
+                   />
+            <Label
+                   AbsoluteLayout.LayoutBounds="225,320,150,150"
+                   FormattedText="Houd me op de 
+                   hoogte van de laatste 
+                   besparingstips 
+                   via de YesHugo nieuwsbrief."
+                   TextColor="DarkBlue"
+                   HorizontalTextAlignment="Center"
+                Scale="0.8">
+            </Label>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </ContentPage>
