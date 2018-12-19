@@ -22,8 +22,6 @@
         </Button>
 
     </Grid>
-
-        <!--
     <ScrollView>
         <ListView x:Name="timelineListView"
     ItemTapped="timelineListView_ItemTapped"
@@ -53,19 +51,19 @@
 
                             <!--<Label HorizontalOptions="Center" Style="{StaticResource ClassTimeLabel}" Text="{Binding ClassTime, StringFormat='{0:H:mm}'}" />-->
 
-                        <Label
+                            <Label
                             Grid.Row="0"
                           Grid.Column="2"
                           Margin="20,0"
                           Text="{Binding ProfileName}" />
 
-                        <Label
+                            <Label
                           Grid.Row="1"
                           Grid.Column="2"
                           Margin="20,0"
                           Text= "{Binding TimeLineTekst}" />
 
-                                       <BoxView
+                            <BoxView
                           Grid.RowSpan="2"
                           Grid.Column="1"
                           HorizontalOptions="Center"
