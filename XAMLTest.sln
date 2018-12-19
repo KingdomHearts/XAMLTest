@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.28307.136
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XAMLTest.Android", "XAMLTest\XAMLTest.Android\XAMLTest.Android.csproj", "{2F651B63-F446-4AF1-951A-DC2D7BC779AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XAMLTest", "XAMLTest\XAMLTest\XAMLTest.csproj", "{6FECFA27-245A-433F-8DE2-491D68400FA7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XAMLTest", "XAMLTest\XAMLTest\XAMLTest.csproj", "{6FECFA27-245A-433F-8DE2-491D68400FA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
