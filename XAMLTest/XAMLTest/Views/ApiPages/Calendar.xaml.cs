@@ -34,7 +34,7 @@ namespace XAMLTest.Views.ApiPages
             SfCalendar calendar = new SfCalendar();
 
             this.Content = calendar;
-            Go();
+           // Go();
             /*
             InitializeComponent();
             Title = "Calendar Sample";
