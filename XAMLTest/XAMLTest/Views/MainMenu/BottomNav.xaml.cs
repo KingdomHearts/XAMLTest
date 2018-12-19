@@ -18,18 +18,23 @@ namespace XAMLTest.Views.MainMenu
 		{
 		    On<Xamarin.Forms.PlatformConfiguration.Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
 
-		    var profNavigationPage = new NavigationPage(new Profile());
-            var tlNavigationPage = new NavigationPage(new TimeLine());
-		    var rideNavigationPage = new NavigationPage(new RidePage());
+		    var profNavigationPage = new NavigationPage(new Profile())
+		    {
+		        Icon = "Tijdlijn6.png",
+		        Title = "Profiel"
+            };
 
-		    rideNavigationPage.Title = "Rit";
-		    rideNavigationPage.Icon = "Tijdlijn4.png";
 
-            tlNavigationPage.Icon = "Tijdlijn7.png";
-		    tlNavigationPage.Title = "Tijdlijn";
-
-		    profNavigationPage.Icon = "Tijdlijn6.png";
-		    profNavigationPage.Title = "Profiel";
+		    var tlNavigationPage = new NavigationPage(new TimeLine())
+		    {
+		        Icon = "Tijdlijn7.png",
+		        Title = "Tijdlijn"
+		    };
+            var rideNavigationPage = new NavigationPage(new RidePage())
+            {
+                Title = "Rit",
+                Icon = "Tijdlijn4.png"
+            };
 
 		    Children.Add(tlNavigationPage);
             Children.Add(rideNavigationPage);
