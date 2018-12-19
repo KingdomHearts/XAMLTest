@@ -25,7 +25,7 @@ namespace XAMLTest
         {
             InitializeComponent();
 
-            MainPage = new MenuSavings();
+            MainPage = new MainMenu();
         }
        
         private static volatile App _instance;

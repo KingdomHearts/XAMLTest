@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using XAMLTest.ViewModels;
 using XAMLTest.Views.MenuPages;
 using XAMLTest.Models;
+using XAMLTest.Views.ApiPages;
 
 
 using Xamarin.Forms;
@@ -57,7 +58,7 @@ namespace XAMLTest.Views.MainMenu
                      App.NavigationMasterDetail(new MenuSavings());
                     break;
                 case "Agenda":
-                     App.NavigationMasterDetail(new MenuAgenda());
+                     App.NavigationMasterDetail(new Calendar());
                     break;
                 case "Wijzig gegevens":
                      App.NavigationMasterDetail(new MenuOptions());
