@@ -3,8 +3,27 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:XAMLTest.Views.MainMenu"
              x:Class="XAMLTest.Views.MainMenu.TimeLine"
+             xmlns:effects1="clr-namespace:XAMLTest.Effects;assembly=XAMLTest"
              NavigationPage.HasNavigationBar="False">
-    
+
+
+    <Grid BackgroundColor="Aqua">
+
+        <Button Image="Tijdlijn4.png"
+            ScaleX="0.5"
+            ScaleY="0.5"
+            HorizontalOptions="Center"
+            VerticalOptions="EndAndExpand"
+            >
+            <Button.Effects>
+                <effects1:TransparentSelectableEffect/>
+            </Button.Effects>
+
+        </Button>
+
+    </Grid>
+
+        <!--
     <ScrollView>
         <ListView x:Name="timelineListView"
     ItemTapped="timelineListView_ItemTapped"

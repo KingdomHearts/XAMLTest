@@ -34,7 +34,7 @@ namespace XAMLTest.Views.MainMenu
                     //MainPage = new NavigationPage (new TimeLine());
                     //await NavigationPage.  //.PushAsync(new TimeLine());
 
-                    App.NavigationMasterDetail(new BottomNav());
+                    App.NavigationMasterDetail(new TimeLine());
 
                 }
            

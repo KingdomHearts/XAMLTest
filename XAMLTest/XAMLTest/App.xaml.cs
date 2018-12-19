@@ -17,6 +17,7 @@ namespace XAMLTest
         {
             App.MasterDetails.IsPresented = false;
             App.MasterDetails.Detail = new NavigationPage(page);
+
         }
 
         public App()

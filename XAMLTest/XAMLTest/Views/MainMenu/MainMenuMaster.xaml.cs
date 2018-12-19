@@ -12,7 +12,9 @@ using XAMLTest.Models;
 
 
 using Xamarin.Forms;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 using Xamarin.Forms.Xaml;
+using ListView = Xamarin.Forms.ListView;
 
 namespace XAMLTest.Views.MainMenu
 {
@@ -28,6 +30,8 @@ namespace XAMLTest.Views.MainMenu
             _model = new MainMenuMasterViewModel();
             BindingContext = _model;
             ListView = MenuItemsListView;
+
+
         }
 
 
