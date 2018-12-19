@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using XAMLTest.Views.MainMenu;
 using System.Threading.Tasks;
+using XAMLTest.Views.MenuPages;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace XAMLTest
@@ -24,7 +25,7 @@ namespace XAMLTest
         {
             InitializeComponent();
 
-            MainPage = new MainMenu();
+            MainPage = new MenuSavings();
         }
        
         private static volatile App _instance;
