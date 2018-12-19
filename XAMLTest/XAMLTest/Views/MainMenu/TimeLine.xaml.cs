@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using XAMLTest.Views.MainMenu;
 using XAMLTest.Data;
 using XAMLTest.Models;
+using XAMLTest.Views.ApiPages;
 
 public class MyNiceObject
 {
@@ -28,8 +29,11 @@ namespace XAMLTest.Views.MainMenu
 
 public partial class TimeLine : ContentPage
 {
+
+        IList<TimeLineData> TimeLineDatas;
     public TimeLine ()
         {
+            TimeLineDatas = new ObservableCollection<TimeLineData>();
 
             InitializeComponent();
             MockData mockData = new MockData();
@@ -44,29 +48,21 @@ public partial class TimeLine : ContentPage
                 mObject = new TimeLineData(timeLineData[i].ProfileName,timeLineData[i].TimeLineTekst, timeLineData[i].TimeLineTime);
                 //mObject.AdvancedInfo = "MyAdvancedInfo" + i;
                 mObjectList.Add(mObject);
-
+                TimeLineDatas.Add(timeLineData[i]);
             }
+            BindingContext = TimeLineDatas;
 
-            //TimeLineView.ItemsSource = mObjectList;
-
-
-            //var template = new DataTemplate(typeof(Label));
-            //template.SetBinding(Label.TextProperty, "ProfileName");
-            //template.SetBinding(Label.TextProperty, "TimeLineTime");
-            //template.SetBinding(Label.TextProperty, "TimeLineTekst");
-            
-            var template = new DataTemplate(typeof(TextCell));
-            template.SetBinding(TextCell.TextProperty, "TimeLineHead");
-            //template.SetBinding(TextCell.DetailProperty, "TimeLineTime");
-            template.SetBinding(TextCell.DetailProperty, "TimeLineTekst");
-            //template.SetBinding(TextCell.DetailProperty, "AdvancedInfo");
-            
-            //TimeLineView.ItemTemplate = template;
         }
 
         async void OnItemClicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Profile());
+        }
+        private void timelineListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            
+            timelineListView.SelectedItem = null;
+            Navigation.PushAsync(new Calendar());
         }
     }
 }

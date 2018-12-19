@@ -5,32 +5,59 @@
              x:Class="XAMLTest.Views.MainMenu.TimeLine"
              NavigationPage.HasNavigationBar="False">
     
-    <Button Text="profile" Clicked="OnItemClicked" />
-    <!--
     <ScrollView>
-    <ListView>
-        <ListView.ItemTemplate>
-        <DataTemplate>
-            <ViewCell>
-                <Grid ColumnSpacing="0" RowSpacing="0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100" />
-                        <ColumnDefinition Width="30" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                    </Grid.RowDefinitions>
-                    <ListView x:Name="TimeLineView" BindingContext="{Binding TimeLineData}" FlexLayout.Grow="1">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </Grid>
-            </ViewCell>
-        </DataTemplate>
-    </ListView.ItemTemplate>
-    </ListView>
+        <ListView x:Name="timelineListView"
+    ItemTapped="timelineListView_ItemTapped"
+    ItemsSource="{Binding .}"
+    RowHeight="75"
+    SeparatorVisibility="None">
+            <ListView.Header>
+                <StackLayout Padding="20,40,0,30">
+                    <Entry Placeholder="Wil je iets delen?" MaxLength="140" />
+                    <Button Scale="0.3" TranslationX="200" Text="verstuur" />
+                </StackLayout>
+            </ListView.Header>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid ColumnSpacing="0" RowSpacing="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="100" />
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="50" />
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+
+                            <!--<Label HorizontalOptions="Center" Style="{StaticResource ClassTimeLabel}" Text="{Binding ClassTime, StringFormat='{0:H:mm}'}" />-->
+
+                        <Label
+                            Grid.Row="0"
+                          Grid.Column="2"
+                          Margin="20,0"
+                          Text="{Binding ProfileName}" />
+
+                        <Label
+                          Grid.Row="1"
+                          Grid.Column="2"
+                          Margin="20,0"
+                          Text= "{Binding TimeLineTekst}" />
+
+                                       <BoxView
+                          Grid.RowSpan="2"
+                          Grid.Column="1"
+                          HorizontalOptions="Center"
+                          VerticalOptions="Fill"
+                          WidthRequest="3" />
+
+                            <Image Grid.Column="0" Source="Tijdlijn18.png" />
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </ScrollView>
-    -->
 </ContentPage>
