@@ -15,11 +15,11 @@
             <Label Text="Locatie: " TextColor="White" />
             <Entry x:Name="EventLocation" Placeholder="" TextColor="White" />
             <Label Text="Begintijd event" TextColor="White" />
-            <Entry x:Name="EventStartTime" Placeholder="" TextColor="White" />
+            <!--<Entry x:Name="EventStartTime" Placeholder="" TextColor="White" />-->
             <DatePicker x:Name="DatePickerStart" x:DataType="DatePicker" />
             <TimePicker x:Name="TimePickerStart" x:DataType="TimePicker" />
             <Label Text="Eindtijd event: " TextColor="White" />
-            <Entry x:Name="EventEndTime" Placeholder="" TextColor="White" />
+            <!--<Entry x:Name="EventEndTime" Placeholder="" TextColor="White" /> -->
             <DatePicker x:Name="DatePickerEnd" x:DataType="DatePicker" />
             <TimePicker x:Name="TimePickerEnd" x:DataType="TimePicker" />
             <Button Text="Voeg Event toe!" Clicked="CreateAppointment" />
