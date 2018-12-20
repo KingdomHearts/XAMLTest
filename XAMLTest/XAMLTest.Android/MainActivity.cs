@@ -9,14 +9,23 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using Xamarin.Forms;
-
+using Android.Support.V4.App;
+using Android.Support.V7.View;
 using Xamarin.Auth;
+using XAMLTest.Views.ApiPages;
 
 namespace XAMLTest.Droid
 {
+
+ 
+   
     [Activity(Label = "YesHugo", Theme = "@style/MainTheme", ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity, IGoogleAuthenticationDelegate
     {
+        static readonly int NOTIFICATION_ID = 1000;
+        static readonly string CHANNEL_ID = "location_notification";
+        internal static readonly string COUNT_KEY = "count";
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
 
@@ -24,9 +33,35 @@ namespace XAMLTest.Droid
                 TabLayoutResource = Resource.Layout.Tabbar;
                 ToolbarResource = Resource.Layout.Toolbar;
 
+                
+
                 base.OnCreate(savedInstanceState);
                 global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
-                LoadApplication(new App());
+            LoadApplication(new App());
+
+            CreateNotificationChannel();
+
+
+            //Intent intent = new Intent(this, typeof(MainActivity));
+
+            //const int pendingIntentID = 0;
+            //PendingIntent pendingIntent =
+                //PendingIntent.GetActivity(this, pendingIntentID, intent, PendingIntentFlags.OneShot);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+               // .SetContentIntent(pendingIntent)
+                .SetContentTitle("Welkom!")
+                .SetContentText("Hallo, Welkom bij Hugo!")
+                .SetSmallIcon(Android.Resource.Drawable.IcNotificationOverlay);
+
+            Notification notification = builder.Build();
+            notification.Defaults |= NotificationDefaults.Vibrate | NotificationDefaults.Sound;
+
+            NotificationManager notificationManager =
+                GetSystemService(Context.NotificationService) as NotificationManager;
+
+           
+            notificationManager.Notify(NOTIFICATION_ID, notification);
+
         }
 
         public override void OnBackPressed()
@@ -77,6 +112,31 @@ namespace XAMLTest.Droid
             var authenticator = Auth.GetAuthenticator();
             var intent = authenticator.GetUI(this);
             StartActivity(intent);
+        }
+
+
+
+        
+
+        void CreateNotificationChannel()
+        {
+            if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+            {
+                // Notification channels are new in API 26 (and not a part of the
+                // support library). There is no need to create a notification
+                // channel on older versions of Android.
+                return;
+            }
+
+            var channelName = "InsertNameHere";
+            var channelDescription = "InsertDescriptionHere";
+            var channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationImportance.Default)
+            {
+                Description = channelDescription
+            };
+
+            var notificationManager = (NotificationManager)GetSystemService(NotificationService);
+            notificationManager.CreateNotificationChannel(channel);
         }
 
     }
