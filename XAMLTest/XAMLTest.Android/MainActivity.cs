@@ -39,30 +39,13 @@ namespace XAMLTest.Droid
                 global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
 
-            CreateNotificationChannel();
-
-
-            //Intent intent = new Intent(this, typeof(MainActivity));
-
-            //const int pendingIntentID = 0;
-            //PendingIntent pendingIntent =
-                //PendingIntent.GetActivity(this, pendingIntentID, intent, PendingIntentFlags.OneShot);
-            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
-               // .SetContentIntent(pendingIntent)
-                .SetContentTitle("Welkom!")
-                .SetContentText("Hallo, Welkom bij Hugo!")
-                .SetSmallIcon(Android.Resource.Drawable.IcNotificationOverlay);
-
-            Notification notification = builder.Build();
-            notification.Defaults |= NotificationDefaults.Vibrate | NotificationDefaults.Sound;
-
-            NotificationManager notificationManager =
-                GetSystemService(Context.NotificationService) as NotificationManager;
-
-           
-            notificationManager.Notify(NOTIFICATION_ID, notification);
+  
+            
 
         }
+
+
+
 
         public override void OnBackPressed()
         {
@@ -118,8 +101,9 @@ namespace XAMLTest.Droid
 
         
 
-        void CreateNotificationChannel()
+        public void CreateNotificationChannel()
         {
+            /*
             if (Build.VERSION.SdkInt < BuildVersionCodes.O)
             {
                 // Notification channels are new in API 26 (and not a part of the
@@ -137,6 +121,33 @@ namespace XAMLTest.Droid
 
             var notificationManager = (NotificationManager)GetSystemService(NotificationService);
             notificationManager.CreateNotificationChannel(channel);
+
+    */
+
+
+
+            //CreateNotificationChannel();
+
+
+            //Intent intent = new Intent(this, typeof(MainActivity));
+
+            //const int pendingIntentID = 0;
+            //PendingIntent pendingIntent =
+            //PendingIntent.GetActivity(this, pendingIntentID, intent, PendingIntentFlags.OneShot);
+            NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                // .SetContentIntent(pendingIntent)
+                .SetContentTitle("Hugo Navigatie")
+                .SetContentText(App.Notification())
+                .SetSmallIcon(Android.Resource.Drawable.IcNotificationOverlay);
+
+            Notification notification = builder.Build();
+            notification.Defaults |= NotificationDefaults.Vibrate | NotificationDefaults.Sound;
+
+            NotificationManager notificationManager =
+                GetSystemService(Context.NotificationService) as NotificationManager;
+
+
+            notificationManager.Notify(NOTIFICATION_ID, notification);
         }
 
     }

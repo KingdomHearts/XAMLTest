@@ -26,6 +26,7 @@
     <PackageReference Include="Syncfusion.Xamarin.SfCalendar" Version="16.4.0.42" />
     <PackageReference Include="Syncfusion.Xamarin.SfSchedule" Version="16.4.0.42" />
     <PackageReference Include="Xam.Plugin.ExternalMaps" Version="4.0.1" />
+    <PackageReference Include="Xam.Plugins.Notifier" Version="3.0.1" />
     <PackageReference Include="Xamarin.Auth" Version="1.6.0.4" />
     <PackageReference Include="Xamarin.Auth.XamarinForms" Version="1.6.0.4" />
     <PackageReference Include="Xamarin.Essentials" Version="1.0.0" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Android.Content;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,10 @@ using XAMLTest.Data;
 
 namespace XAMLTest.Views.MainMenu
 {
+    public interface IBackgroundService
+    {
+        void Start();
+    }
     public partial class MainPage : ContentPage
     {
         public MainPage()
