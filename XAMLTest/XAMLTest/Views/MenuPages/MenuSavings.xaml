@@ -6,8 +6,6 @@
             
     <ContentPage.Content>
         <AbsoluteLayout>
-           
-
             <Image Source="Besparingen2.png"
                 AbsoluteLayout.LayoutBounds="-20,30,175,175"/>
 

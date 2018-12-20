@@ -36,12 +36,10 @@ namespace XAMLTest.Views.MainMenu
         }
 
 
-        private async void MenuItemListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        private void MenuItemListView_OnItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var item = e.Item as MainMenuItem;
-            if (item == null)
+            if (!(e.Item is MainMenuItem item))
             {
-
                 Console.WriteLine("item is null");
                 return;
             }

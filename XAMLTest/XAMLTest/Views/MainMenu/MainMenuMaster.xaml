@@ -4,8 +4,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="XAMLTest.Views.MainMenu.MainMenuMaster"
              NavigationPage.HasNavigationBar="True"
+             BackgroundColor="White"
              Title="Master">
-    <StackLayout VerticalOptions="Start" 
+    <StackLayout VerticalOptions="Start"
+        BackgroundColor="White"
         HorizontalOptions="FillAndExpand" 
         Orientation="Horizontal"          
         Padding="10,10,10,10">
@@ -15,7 +17,7 @@
                 ItemsSource="{Binding MenuItems}"
             ItemTapped="MenuItemListView_OnItemTapped">
             <ListView.Header>
-                <Grid HeightRequest="50" BackgroundColor="White" Padding="0">
+                <Grid HeightRequest="50" BackgroundColor="White" Padding="2">
                     <Image Source="Menu1.png"
                            Aspect="AspectFit"
                            HorizontalOptions="EndAndExpand" VerticalOptions="FillAndExpand"></Image>
@@ -31,10 +33,10 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Padding="15,7" HorizontalOptions="FillAndExpand">
+                        <StackLayout Padding="35,2" HorizontalOptions="FillAndExpand">
                             <Image VerticalOptions="FillAndExpand"
                                    Source="{Binding Icon}"
-                                   Scale="1.2"></Image>
+                                   Scale="1.4"></Image>
                         </StackLayout>
                   </ViewCell>
                 </DataTemplate>
