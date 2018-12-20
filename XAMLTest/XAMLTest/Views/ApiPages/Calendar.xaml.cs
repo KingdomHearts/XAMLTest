@@ -21,6 +21,7 @@ using Google.Apis.Util.Store;
 using System.Threading;
 using Syncfusion.SfSchedule.XForms;
 using XAMLTest.Data;
+using Plugin.ExternalMaps;
 
 namespace XAMLTest.Views.ApiPages
 {
@@ -45,6 +46,7 @@ namespace XAMLTest.Views.ApiPages
 
             schedule.CellLongPressed += Schedule_CellLongPressed;
             schedule.CellDoubleTapped += Schedule_CellDoubleTapped;
+            schedule.CellTapped += Schedule_CellTapped;
 
             ScheduleAppointmentCollection calendarObject = CalendarMockData.GetJsonFileCalendar();
             if (calendarObject != null)
@@ -86,9 +88,40 @@ namespace XAMLTest.Views.ApiPages
     */
         }
 
-        private void Schedule_CellDoubleTapped(object sender, CellTappedEventArgs e)
+        private void Schedule_CellTapped(object sender, CellTappedEventArgs e)
         {
             schedule.ScheduleView = ScheduleView.DayView;
+        }
+
+        private void Schedule_CellDoubleTapped(object sender, CellTappedEventArgs e)
+        {
+            string name = "";
+            string street = "";
+            string city = "";
+            string state = "";
+            string zip = "";
+            string country = "";
+            string countryCode = "";
+            List<object> list = e.Appointments;
+            object appointment = e.Appointment;
+            if (appointment != null)
+            {
+                ScheduleAppointment scheduleAppointment = appointment as ScheduleAppointment;
+                name = scheduleAppointment.Subject;
+                city = scheduleAppointment.Location;
+            }
+            else if (list != null)
+            {
+                ScheduleAppointment scheduleAppointment = list[0] as ScheduleAppointment;
+                name = scheduleAppointment.Subject;
+                city = scheduleAppointment.Location;
+            }
+            else
+            {
+                return;
+            }
+
+            var success = CrossExternalMaps.Current.NavigateTo(name, street, city, state, zip, country, countryCode);
         }
 
         public void Schedule_CellLongPressed(object sender, EventArgs e)

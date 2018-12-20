@@ -58,6 +58,9 @@
     <PackageReference Include="Syncfusion.Xamarin.SfSchedule">
       <Version>16.4.0.42</Version>
     </PackageReference>
+    <PackageReference Include="Xam.Plugin.ExternalMaps">
+      <Version>4.0.1</Version>
+    </PackageReference>
     <PackageReference Include="Xamarin.Auth.XamarinForms">
       <Version>1.6.0.4</Version>
     </PackageReference>
