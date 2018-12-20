@@ -20,6 +20,7 @@ using Google.Apis.Services;
 using Google.Apis.Util.Store;
 using System.Threading;
 using Syncfusion.SfSchedule.XForms;
+using XAMLTest.Data;
 
 namespace XAMLTest.Views.ApiPages
 {
@@ -31,6 +32,8 @@ namespace XAMLTest.Views.ApiPages
         public static GoogleAuthenticator Auth;
         SfCalendar calendar;
         SfSchedule schedule;
+        Color defaultColor = Color.Cyan;
+        ScheduleAppointmentCollection scheduleAppointmentCollection = new ScheduleAppointmentCollection();
         public Calendar()
         {
             this.InitializeComponent();
@@ -41,7 +44,18 @@ namespace XAMLTest.Views.ApiPages
             schedule.ScheduleView = ScheduleView.MonthView;
 
             schedule.CellLongPressed += Schedule_CellLongPressed;
+            schedule.CellDoubleTapped += Schedule_CellDoubleTapped;
 
+            ScheduleAppointmentCollection calendarObject = CalendarMockData.GetJsonFileCalendar();
+            if (calendarObject != null)
+            {
+                for (int i = 0; i < calendarObject.Count; i++)
+                {
+                    calendarObject[i].Color = defaultColor;
+                    scheduleAppointmentCollection.Add(calendarObject[i]);
+                }
+            }
+            schedule.DataSource = calendarObject;
 
             this.Content = schedule;
 
@@ -72,6 +86,11 @@ namespace XAMLTest.Views.ApiPages
     */
         }
 
+        private void Schedule_CellDoubleTapped(object sender, CellTappedEventArgs e)
+        {
+            schedule.ScheduleView = ScheduleView.DayView;
+        }
+
         public void Schedule_CellLongPressed(object sender, EventArgs e)
         {
             overlay.IsVisible = true;
@@ -82,15 +101,37 @@ namespace XAMLTest.Views.ApiPages
 
         public void CreateAppointment(object sender, EventArgs e)
         {
-            ScheduleAppointmentCollection scheduleAppointmentCollection = new ScheduleAppointmentCollection();
+            
+            
+            DateTime dateStart = DatePickerStart.Date;
+            TimeSpan timePickerStart = TimePickerStart.Time;
+            
+            DateTime dateEnd = DatePickerEnd.Date;
+            TimeSpan timePickerEnd = TimePickerEnd.Time;
+
+            DateTime dateTimeStart = dateStart.Date + timePickerStart;
+            DateTime dateTimeEnd = dateEnd.Date + timePickerEnd;
+
+            string eventName = EventName.Text;
+            string location = EventLocation.Text;
+
 
             scheduleAppointmentCollection.Add(new ScheduleAppointment()
             {
-                StartTime = new DateTime(2017, 05, 08, 10, 0, 0),
-                EndTime = new DateTime(2017, 05, 08, 12, 0, 0),
+                StartTime = dateTimeStart,
+                EndTime = dateTimeEnd,
                 Subject = EventName.Text,
                 Location = EventLocation.Text,
+                Color = new Color(0,0,1),
             });
+
+            schedule.DataSource = scheduleAppointmentCollection;
+
+            CalendarMockData.CreateJsonFile(scheduleAppointmentCollection);
+
+            overlay.IsVisible = false;
+            this.Content = schedule;
+
             /*
             CalendarInlineEvent calendarInlineEvent = new CalendarInlineEvent();
             string eventname = EventName.Text;
