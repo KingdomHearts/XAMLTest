@@ -2,8 +2,28 @@
 
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:GettingStarted" 
 	xmlns:syncfusion="clr-namespace:Syncfusion.SfCalendar.XForms;assembly=Syncfusion.SfCalendar.XForms"
-	x:Class="GettingStarted.CalendarPage">
-    <ContentPage.Content>
-        <syncfusion:SfCalendar x:Name="syncCalendar" />
-    </ContentPage.Content>
+	x:Class="XAMLTest.Views.ApiPages.Calendar">
+    <AbsoluteLayout x:Name="overlay"
+                   AbsoluteLayout.LayoutBounds="0, 0, 1, 1"
+                   AbsoluteLayout.LayoutFlags="All"
+                   IsVisible="False"
+                   BackgroundColor="#C0808080"
+                   Padding="10, 0">
+        <StackLayout>
+            <Label Text="Naam Event: " TextColor="White" />
+            <Entry x:Name="EventName" Placeholder="" TextColor="White" />
+            <Label Text="Locatie: " TextColor="White" />
+            <Entry x:Name="EventLocation" Placeholder="" TextColor="White" />
+            <Label Text="Begintijd event" TextColor="White" />
+            <Entry x:Name="EventStartTime" Placeholder="" TextColor="White" />
+            <DatePicker x:Name="DatePickerStart" x:DataType="DatePicker" />
+            <TimePicker x:Name="TimePickerStart" x:DataType="TimePicker" />
+            <Label Text="Eindtijd event: " TextColor="White" />
+            <Entry x:Name="EventEndTime" Placeholder="" TextColor="White" />
+            <DatePicker x:Name="DatePickerEnd" x:DataType="DatePicker" />
+            <TimePicker x:Name="TimePickerEnd" x:DataType="TimePicker" />
+            <Button Text="Voeg Event toe!" Clicked="CreateAppointment" />
+        </StackLayout>
+        <!-- Overlay -->
+    </AbsoluteLayout>
 </ContentPage>
