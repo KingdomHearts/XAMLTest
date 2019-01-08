@@ -47,7 +47,8 @@ namespace XAMLTest.Views.MainMenu
             switch (item.Text)
             {
                 case "Evenementen":
-                     App.NavigationMasterDetail(new MainEvents());
+                    //App.NavigationMasterDetail(new MainEvents());
+                    App.NavigationMasterDetail(new Navigation());
                     break;
                 case "Groepen":
                      App.NavigationMasterDetail(new MainGroups());

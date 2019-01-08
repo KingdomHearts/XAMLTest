@@ -13,6 +13,7 @@ using Android.Support.V4.App;
 using Android.Support.V7.View;
 using Xamarin.Auth;
 using XAMLTest.Views.ApiPages;
+using Plugin.CurrentActivity;
 
 namespace XAMLTest.Droid
 {
@@ -28,9 +29,11 @@ namespace XAMLTest.Droid
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Xamarin.FormsMaps.Init(this, savedInstanceState);
+            CrossCurrentActivity.Current.Init(this, savedInstanceState);
 
-                // Previewer only code  
-                TabLayoutResource = Resource.Layout.Tabbar;
+            // Previewer only code  
+            TabLayoutResource = Resource.Layout.Tabbar;
                 ToolbarResource = Resource.Layout.Toolbar;
 
                 
@@ -148,6 +151,12 @@ namespace XAMLTest.Droid
 
 
             notificationManager.Notify(NOTIFICATION_ID, notification);
+        }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
+        {
+            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
     }
