@@ -63,5 +63,11 @@ public partial class TimeLine : ContentPage
             timelineListView.SelectedItem = null;
             Navigation.PushAsync(new Calendar());
         }
+
+        private void PressMeButton_Pressed(object sender, EventArgs e)
+        {
+            App.NavigationMasterDetail(new Profile());
+        }
+
     }
 }

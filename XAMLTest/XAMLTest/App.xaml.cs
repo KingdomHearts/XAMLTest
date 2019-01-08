@@ -61,7 +61,7 @@ namespace XAMLTest
             {
                 for (int i = 0; i < json.Count; i++)
                 {
-                    if (json[i].StartTime > DateTime.Now)
+                    if (json[i].StartTime < DateTime.Now)
                     {
                         Application.Current.Properties["NotificationText"] = "Als je nu vertrekt ben je voor " + json[i].StartTime.TimeOfDay.ToString() + " op je bestemming.";
                         CrossLocalNotifications.Current.Show("Hugo Navigation", Current.Properties["NotificationText"].ToString());

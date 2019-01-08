@@ -4,77 +4,64 @@
              xmlns:local="clr-namespace:XAMLTest.Views.MainMenu"
              x:Class="XAMLTest.Views.MainMenu.TimeLine"
              xmlns:effects1="clr-namespace:XAMLTest.Effects;assembly=XAMLTest"
-             NavigationPage.HasNavigationBar="False">
-
-
-    <Grid BackgroundColor="Aqua">
-
-        <Button Image="Tijdlijn4.png"
-            ScaleX="0.5"
-            ScaleY="0.5"
-            HorizontalOptions="Center"
-            VerticalOptions="EndAndExpand"
-            >
-            <Button.Effects>
-                <effects1:TransparentSelectableEffect/>
-            </Button.Effects>
-
-        </Button>
-
-    </Grid>
+             NavigationPage.HasNavigationBar="True">
     <ScrollView>
-        <ListView x:Name="timelineListView"
+
+
+            <ListView x:Name="timelineListView"
     ItemTapped="timelineListView_ItemTapped"
     ItemsSource="{Binding .}"
     RowHeight="75"
     SeparatorVisibility="None">
-            <ListView.Header>
-                <StackLayout Padding="20,40,0,30">
-                    <Entry Placeholder="Wil je iets delen?" MaxLength="140" />
-                    <Button Scale="0.3" TranslationX="200" Text="verstuur" />
-                </StackLayout>
-            </ListView.Header>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <ViewCell>
-                        <Grid ColumnSpacing="0" RowSpacing="0">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="100" />
-                                <ColumnDefinition Width="30" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="50" />
-                                <RowDefinition Height="50" />
-                            </Grid.RowDefinitions>
+                <ListView.Header>
+                    <StackLayout Padding="20,40,0,30">
+                        <Entry Placeholder="Wil je iets delen?" MaxLength="140" />
+                        <Button Scale="0.3" TranslationX="200" Text="verstuur" />
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid ColumnSpacing="0" RowSpacing="0">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="30" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="50" />
+                                    <RowDefinition Height="50" />
+                                </Grid.RowDefinitions>
 
-                            <!--<Label HorizontalOptions="Center" Style="{StaticResource ClassTimeLabel}" Text="{Binding ClassTime, StringFormat='{0:H:mm}'}" />-->
+                                <!--<Label HorizontalOptions="Center" Style="{StaticResource ClassTimeLabel}" Text="{Binding ClassTime, StringFormat='{0:H:mm}'}" />-->
 
-                            <Label
+                                <Label
                             Grid.Row="0"
                           Grid.Column="2"
                           Margin="20,0"
                           Text="{Binding ProfileName}" />
 
-                            <Label
+                                <Label
                           Grid.Row="1"
                           Grid.Column="2"
                           Margin="20,0"
                           Text= "{Binding TimeLineTekst}" />
 
-                            <BoxView
+                                <BoxView
                           Grid.RowSpan="2"
                           Grid.Column="1"
                           HorizontalOptions="Center"
                           VerticalOptions="Fill"
                           WidthRequest="3" />
 
-                            <Image Grid.Column="0" Source="Tijdlijn18.png" />
-                        </Grid>
-                    </ViewCell>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-    </ScrollView>
+                                <Image Grid.Column="0" Source="Tijdlijn18.png" />
+
+
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </ScrollView>
 </ContentPage>
