@@ -23,14 +23,27 @@ namespace XAMLTest
         LocationManager locationManager;
         Xamarin.Forms.Maps.Map pmap = new Xamarin.Forms.Maps.Map();
         Xamarin.Forms.GoogleMaps.Map gmap = new Xamarin.Forms.GoogleMaps.Map();
+        Thread t;
         public Navigation()
         {
             InitializeComponent();
-            pmap.MoveToRegion(new Xamarin.Forms.Maps.MapSpan(new Xamarin.Forms.Maps.Position(0, 0), 360, 360));
+
+            
+
+
+            // pmap.MoveToRegion(new Xamarin.Forms.Maps.MapSpan(new Xamarin.Forms.Maps.Position(0, 0), 360, 360));
+
+        }
+
+        /*public async Task ReloadPageAsync()
+        {
+            await GetLocation();
+            pmap.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude), Xamarin.Forms.Maps.Distance.FromMiles(10)));
+           
             var stack = new StackLayout { Spacing = 0 };
             stack.Children.Add(pmap);
             Content = stack;
-        }
+        }*/
         public IntPtr Handle => throw new NotImplementedException();
 
         public void Dispose()
@@ -39,11 +52,11 @@ namespace XAMLTest
         }
 
         //FormsMaps.Init();
-        async public Task<Plugin.Geolocator.Abstractions.Position> GetLocation()
+        public Task<Plugin.Geolocator.Abstractions.Position> GetLocation()
         {
 
             var locator = CrossGeolocator.Current;
-            var position = await locator.GetPositionAsync(TimeSpan.FromMilliseconds(1000));
+            var position = locator.GetPositionAsync(TimeSpan.FromMilliseconds(1000));
             return position;
         }
 
@@ -65,6 +78,20 @@ namespace XAMLTest
         public void OnStatusChanged(string provider, [GeneratedEnum] Availability status, Bundle extras)
         {
             throw new NotImplementedException();
+        }
+
+        async void Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (e.Value == true)
+            {
+                var position = await GetLocation();
+                pmap.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude), Xamarin.Forms.Maps.Distance.FromMiles(10)));
+
+                var stack = new StackLayout { Spacing = 0 };
+                stack.Children.Add(pmap);
+                stack.Children.Add(slider);
+                Content = stack;
+            }
         }
     }
 }

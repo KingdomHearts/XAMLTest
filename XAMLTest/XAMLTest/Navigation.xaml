@@ -10,7 +10,8 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-              <!--<maps:Map Grid.Row="1" x:Name="map"
+                <Switch x:Name="slider" Toggled="Switch_Toggled" IsToggled="false" />
+                <!--<maps:Map Grid.Row="1" x:Name="map"
                       InitialCameraUpdate="-23.68, -46.87, 13, 30, 60"
                       VerticalOptions="FillAndExpand" />-->
             </Grid>
