@@ -52,11 +52,26 @@ namespace XAMLTest
         }
 
         //FormsMaps.Init();
+        //public Task<IEnumerable<Plugin.Geolocator.Abstractions.Position>> GetLocation()
         public Task<Plugin.Geolocator.Abstractions.Position> GetLocation()
         {
 
             var locator = CrossGeolocator.Current;
-            var position = locator.GetPositionAsync(TimeSpan.FromMilliseconds(1000));
+            locator.DesiredAccuracy = 120;
+            if (locator.IsGeolocationAvailable)
+            {
+                var test = 1;
+            }
+            if (locator.IsGeolocationEnabled)
+            {
+                var test = 1;
+            }
+            if (!locator.IsListening)
+            {
+                locator.StartListeningAsync(TimeSpan.FromSeconds(10), 1);
+            }
+            var position = locator.GetPositionAsync(TimeSpan.FromSeconds(10));
+            //var position = locator.GetPositionsForAddressAsync("Enschede");
             return position;
         }
 
@@ -84,7 +99,54 @@ namespace XAMLTest
         {
             if (e.Value == true)
             {
-                var position = await GetLocation();
+                var locator = CrossGeolocator.Current;
+                string start = "";
+                string eind = "";
+                Plugin.Geolocator.Abstractions.Position position;
+                if (StartLocatie.Text != "" && StartLocatie.Text != null)
+                {
+                    start = StartLocatie.Text;
+                    var positionadress = await locator.GetPositionsForAddressAsync(start);
+                    var pin = new Xamarin.Forms.Maps.Pin
+                    {
+                        Type = Xamarin.Forms.Maps.PinType.Place,
+                        Position = (new Xamarin.Forms.Maps.Position(positionadress.FirstOrDefault().Latitude, positionadress.FirstOrDefault().Longitude)),
+                        Label = "Start",
+                        Address = start
+                    };
+                    pmap.Pins.Add(pin);
+                }
+                else if (StartLocatie.Text == "Mijn")
+                {
+
+                    position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10), null, false);
+                    var pin = new Xamarin.Forms.Maps.Pin
+                    {
+                        Type = Xamarin.Forms.Maps.PinType.Place,
+                        Position = (new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude)),
+                        Label = "Start",
+                        Address = "custom detail info"
+                    };
+
+                    pmap.Pins.Add(pin);
+                }
+                if (EindLocatie.Text != "" && EindLocatie.Text != null)
+                {
+
+                    eind = EindLocatie.Text;
+                    var positionadress = await locator.GetPositionsForAddressAsync(eind);
+                    var pin = new Xamarin.Forms.Maps.Pin
+                    {
+                        Type = Xamarin.Forms.Maps.PinType.Place,
+                        Position = (new Xamarin.Forms.Maps.Position(positionadress.FirstOrDefault().Latitude, positionadress.FirstOrDefault().Longitude)),
+                        Label = "Eind",
+                        Address = eind
+                    };
+
+                    pmap.Pins.Add(pin);
+                }
+                //var position = positionadress.FirstOrDefault();*/
+                position = await locator.GetPositionAsync(TimeSpan.FromSeconds(10), null, false);
                 pmap.MoveToRegion(Xamarin.Forms.Maps.MapSpan.FromCenterAndRadius(new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude), Xamarin.Forms.Maps.Distance.FromMiles(10)));
 
                 var stack = new StackLayout { Spacing = 0 };

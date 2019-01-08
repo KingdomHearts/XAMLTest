@@ -8,9 +8,14 @@
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-
-                <Switch x:Name="slider" Toggled="Switch_Toggled" IsToggled="false" />
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200" />
+                </Grid.ColumnDefinitions>
+                <Entry Grid.Row="0" x:Name="StartLocatie" Placeholder="Start" />
+                <Entry Grid.Row="1" x:Name="EindLocatie" Placeholder="Einde" />
+                <Switch Grid.Column="1" x:Name="slider" Toggled="Switch_Toggled" IsToggled="false" />
                 <!--<maps:Map Grid.Row="1" x:Name="map"
                       InitialCameraUpdate="-23.68, -46.87, 13, 30, 60"
                       VerticalOptions="FillAndExpand" />-->
