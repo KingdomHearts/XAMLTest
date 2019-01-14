@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+              xmlns:maps="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"          
+			 xmlns:local="clr-namespace:XAMLTest.Models"
              x:Class="XAMLTest.Navigation">
     <ContentPage.Content>
         <Frame x:Name="GoogleMapsFrame">
@@ -9,13 +10,16 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
+                    <RowDefinition Height="350" />
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="200" />
                 </Grid.ColumnDefinitions>
-                <Entry Grid.Row="0" x:Name="StartLocatie" Placeholder="Start" />
+                <Entry Grid.Row="0" x:Name="StartLocatie" Placeholder="Start" Text="Mijn" />
                 <Entry Grid.Row="1" x:Name="EindLocatie" Placeholder="Einde" />
                 <Switch Grid.Column="1" x:Name="slider" Toggled="Switch_Toggled" IsToggled="false" />
+
+                <!--<local:DirectionMap Grid.Row="2" Grid.ColumnSpan="2" x:Name="directionMap" MapType="Street" IsVisible="False" />-->
                 <!--<maps:Map Grid.Row="1" x:Name="map"
                       InitialCameraUpdate="-23.68, -46.87, 13, 30, 60"
                       VerticalOptions="FillAndExpand" />-->
